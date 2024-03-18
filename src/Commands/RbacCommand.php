@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace BinaryCats\Rbac\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class RbacCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'rbac';
 
     public $description = 'My command';
 
