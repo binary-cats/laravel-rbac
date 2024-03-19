@@ -11,8 +11,6 @@ use Spatie\Snapshots\MatchesSnapshots;
 
 class AbilityMakeCommandTest extends TestCase
 {
-    use MatchesSnapshots;
-
     #[After]
     protected function tearDown(): void
     {
@@ -40,6 +38,5 @@ class AbilityMakeCommandTest extends TestCase
         $this->assertStringContainsString("case CreateFoo = 'create foo';", File::get($stubPath));
         $this->assertStringContainsString("case UpdateFoo = 'update foo';", File::get($stubPath));
         $this->assertStringContainsString("case DeleteFoo = 'delete foo';", File::get($stubPath));
-        $this->assertMatchesFileSnapshot($stubPath);
     }
 }

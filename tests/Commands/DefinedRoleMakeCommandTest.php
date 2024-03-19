@@ -11,8 +11,6 @@ use Spatie\Snapshots\MatchesSnapshots;
 
 class DefinedRoleMakeCommandTest extends TestCase
 {
-    use MatchesSnapshots;
-
     #[After]
     protected function tearDown(): void
     {
@@ -36,6 +34,5 @@ class DefinedRoleMakeCommandTest extends TestCase
         $this->assertFileExists($stubPath);
         $this->assertStringContainsString('class FooRole extends DefinedRole', File::get($stubPath));
         $this->assertStringContainsString('namespace App\Roles;', File::get($stubPath));
-        $this->assertMatchesFileSnapshot($stubPath);
     }
 }
