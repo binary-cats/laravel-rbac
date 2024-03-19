@@ -22,7 +22,7 @@ abstract class DefinedRole implements DefinedRoleContract
         $reflection = new ReflectionClass($this);
 
         if ($reflection->hasProperty('name')) {
-            return $reflection->getProperty('name');
+            return $this->name;
         }
 
         return Str::of($reflection->getName())

@@ -34,4 +34,15 @@ class DiscoverAbilitiesTest extends TestCase
         $this->assertContains(FooAbility::One, $result);
         $this->assertContains(FooAbility::Two, $result);
     }
+
+    #[Test]
+    public function it_will_discover_the_abilities_in_a_given_path(): void
+    {
+        $result = DiscoverAbilities::within(
+            __DIR__.'/Fixtures/Abilities',
+            __DIR__.'/../'
+        );
+
+        dd($result);
+    }
 }
