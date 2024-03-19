@@ -14,7 +14,7 @@ abstract class DefinedRole implements DefinedRoleContract
 {
     /** @var array|string[]  */
     protected array $guards = [];
-    protected ?string $name=null;
+    protected string $name='';
 
     /**
      * Guess the name of the role
@@ -23,7 +23,7 @@ abstract class DefinedRole implements DefinedRoleContract
      */
     public function name(): string
     {
-        if (null !== $this->name) {
+        if ('' !== $this->name) {
             return $this->name;
         }
 
