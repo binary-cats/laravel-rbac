@@ -17,6 +17,17 @@ class ResetPermissionsTest extends TestCase
     #[Test]
     public function it_will_create_all_permissions()
     {
+        DiscoverAbilities::guessClassNamesUsing(function(SplFileInfo $file, $basePath) {
+            return Str::of($file->getRealPath())
+                ->replaceFirst($basePath, '')
+                ->trim(DIRECTORY_SEPARATOR)
+                ->after('/tests/')
+                ->prepend('BinaryCats/Rbac/Tests/')
+                ->replaceLast('.php', '')
+                ->replace(DIRECTORY_SEPARATOR, '\\')
+                ->toString();
+        });
+        
         Config::set('auth.defaults.guard', 'web');
         Config::set('rbac.path', __DIR__.'/../Fixtures/Abilities');
 
