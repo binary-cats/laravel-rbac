@@ -58,8 +58,8 @@ class DiscoverAbilities
                 continue;
             }
 
-            foreach($ability->getReflectionConstants() as $permission) {
-                $enums[] =  $ability->name::{$permission->getName()};
+            foreach($ability->name::cases() as $permission) {
+                $enums[] =  $permission;
             }
         }
 
