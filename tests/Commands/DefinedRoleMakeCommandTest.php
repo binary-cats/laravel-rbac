@@ -7,7 +7,6 @@ use BinaryCats\Rbac\Tests\TestCase;
 use Illuminate\Support\Facades\File;
 use PHPUnit\Framework\Attributes\After;
 use PHPUnit\Framework\Attributes\Test;
-use Spatie\Snapshots\MatchesSnapshots;
 
 class DefinedRoleMakeCommandTest extends TestCase
 {
