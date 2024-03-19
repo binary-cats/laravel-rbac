@@ -16,15 +16,17 @@ class SyncDefinedRoleTest extends TestCase
         Artisan::expects('call')
             ->once()
             ->with(
-                'permission:create-role', [
-                'name' => 'foo role',
-                'guard' => 'web',
-                'permissions' => 'bar|una'
-            ]);
+                'permission:create-role',
+                [
+                    'name'        => 'foo role',
+                    'guard'       => 'web',
+                    'permissions' => 'bar|una',
+                ]
+            );
 
         SyncDefinedRole::run('foo role', 'web', [
             'bar',
-            FooAbility::One
+            FooAbility::One,
         ]);
     }
 }

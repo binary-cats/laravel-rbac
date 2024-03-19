@@ -6,6 +6,6 @@ use BinaryCats\Rbac\DefinedRole;
 
 class FooNamedRole extends DefinedRole
 {
-    /** @var string  */
+    /** @var string */
     protected string $name = 'Bar Bar Role';
 }

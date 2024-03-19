@@ -16,12 +16,12 @@ class SyncDefinedRole extends Action
         $permissions = collect($permissions)
             ->map(fn ($permission) => match (true) {
                 $permission instanceof BackedEnum => $permission->value,
-                default => (string) $permission
+                default                           => (string) $permission
             })->implode('|');
 
         Artisan::call('permission:create-role', [
-            'name' => $name,
-            'guard' => $guard,
+            'name'        => $name,
+            'guard'       => $guard,
             'permissions' => $permissions,
         ]);
     }

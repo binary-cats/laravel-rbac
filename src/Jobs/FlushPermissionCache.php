@@ -17,6 +17,7 @@ class FlushPermissionCache
 
     /**
      * @param \Spatie\Permission\PermissionRegistrar $registrar
+     *
      * @return void
      */
     public function handle(PermissionRegistrar $registrar): void

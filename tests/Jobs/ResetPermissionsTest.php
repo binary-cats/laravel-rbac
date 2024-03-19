@@ -16,7 +16,7 @@ class ResetPermissionsTest extends TestCase
     #[Test]
     public function it_will_create_all_permissions()
     {
-        DiscoverAbilities::guessClassNamesUsing(function(SplFileInfo $file, $basePath) {
+        DiscoverAbilities::guessClassNamesUsing(function (SplFileInfo $file, $basePath) {
             return Str::of($file->getRealPath())
                 ->replaceFirst($basePath, '')
                 ->trim(DIRECTORY_SEPARATOR)
@@ -27,7 +27,7 @@ class ResetPermissionsTest extends TestCase
                 ->toString();
         });
 
-        $this->app->singleton(StorePermission::class, fn() => StorePermission::mock());
+        $this->app->singleton(StorePermission::class, fn () => StorePermission::mock());
 
         Config::set('auth.defaults.guard', 'web');
         Config::set('rbac.path', __DIR__.'/../Fixtures/Abilities');

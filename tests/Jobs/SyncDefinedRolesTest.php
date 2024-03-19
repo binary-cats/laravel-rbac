@@ -4,8 +4,8 @@ namespace BinaryCats\Rbac\Tests\Jobs;
 
 use BinaryCats\Rbac\Actions\SyncDefinedRole;
 use BinaryCats\Rbac\Jobs\SyncDefinedRoles;
-use BinaryCats\Rbac\Tests\Fixtures\FooRole;
 use BinaryCats\Rbac\Tests\Fixtures\FooNamedRole;
+use BinaryCats\Rbac\Tests\Fixtures\FooRole;
 use BinaryCats\Rbac\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
@@ -18,7 +18,7 @@ class SyncDefinedRolesTest extends TestCase
             FooRole::class,
         ]);
 
-        $this->app->singleton(SyncDefinedRole::class, fn() => SyncDefinedRole::mock());
+        $this->app->singleton(SyncDefinedRole::class, fn () => SyncDefinedRole::mock());
 
         SyncDefinedRole::mock()
             ->expects('handle')

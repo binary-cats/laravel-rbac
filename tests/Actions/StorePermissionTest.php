@@ -16,10 +16,12 @@ class StorePermissionTest extends TestCase
         Artisan::expects('call')
             ->once()
             ->with(
-                'permission:create-permission', [
-                'name' => 'una',
-                'guard' => 'web',
-            ]);
+                'permission:create-permission',
+                [
+                    'name'  => 'una',
+                    'guard' => 'web',
+                ]
+            );
 
         StorePermission::run(FooAbility::One, 'web');
     }
