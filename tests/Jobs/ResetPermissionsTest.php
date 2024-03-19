@@ -5,7 +5,6 @@ namespace BinaryCats\Rbac\Tests\Jobs;
 use BinaryCats\Rbac\Actions\StorePermission;
 use BinaryCats\Rbac\DiscoverAbilities;
 use BinaryCats\Rbac\Jobs\ResetPermissions;
-use BinaryCats\Rbac\Tests\Fixtures\Abilities\FooAbility;
 use BinaryCats\Rbac\Tests\TestCase;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
@@ -27,7 +26,9 @@ class ResetPermissionsTest extends TestCase
                 ->replace(DIRECTORY_SEPARATOR, '\\')
                 ->toString();
         });
-        
+
+        $this->app->singleton(StorePermission::class, fn() => StorePermission::mock());
+
         Config::set('auth.defaults.guard', 'web');
         Config::set('rbac.path', __DIR__.'/../Fixtures/Abilities');
 

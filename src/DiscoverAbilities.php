@@ -43,7 +43,6 @@ class DiscoverAbilities
                     static::classFromFile($ability, $basePath)
                 );
             } catch (ReflectionException $e) {
-                dd($e);
                 continue;
             }
 
