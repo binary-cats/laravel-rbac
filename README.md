@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/binary-cats/rbac.svg?style=flat-square)](https://packagist.org/packages/binary-cats/rbac)
 [![run-tests](https://github.com/binary-cats/rbac/actions/workflows/run-tests.yml/badge.svg)](https://github.com/binary-cats/rbac/actions/workflows/run-tests.yml)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/binary-cats/rbac/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/binary-cats/rbac/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![GitHub Code Style Action Status](https://github.styleci.io/repos/773171043/shield?branch=main&style=flat-square)](https://github.com/binary-cats/rbac/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 
 Opinionated extension for [spatie/laravel-permissions](https://spatie.be/docs/laravel-permission/v6/introduction).
 When your permission list grows and maintenance becomes an issue, this package offers simple way of defining roles and their permissions.  
