@@ -2,24 +2,23 @@
 
 namespace BinaryCats\Rbac;
 
+use BinaryCats\Rbac\Commands\AbilityMakeCommand;
+use BinaryCats\Rbac\Commands\DefinedRoleMakeCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use BinaryCats\Rbac\Commands\RbacCommand;
+use BinaryCats\Rbac\Commands\RbacResetCommand;
 
 class RbacServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
         $package
             ->name('rbac')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_rbac_table')
-            ->hasCommand(RbacCommand::class);
+            ->hasCommands([
+                AbilityMakeCommand::class,
+                DefinedRoleMakeCommand::class,
+                RbacResetCommand::class
+            ]);
     }
 }

@@ -1,0 +1,11 @@
+<?php
+
+namespace {{ namespace }};
+
+enum {{ class }}: string
+{
+    case View{{ Subject }} = 'view {{ subject }}';
+    case Create{{ Subject }} = 'create {{ subject }}';
+    case Update{{ Subject }} = 'update {{ subject }}';
+    case Delete{{ Subject }} = 'delete {{ subject }}';
+}

@@ -1,0 +1,23 @@
+<?php
+
+namespace {{ namespace }};
+
+use BinaryCats\Rbac\DefinedRole;
+
+class {{ class }} extends DefinedRole
+{
+    /** @var array|string[]  */
+    protected array $guards = [
+        'web'
+    ];
+
+    /**
+     * List of enumerated permissions for the `web` guard
+     *
+     * @return array
+     */
+    public function web(): array
+    {
+        return [];
+    }
+}
