@@ -2,6 +2,7 @@
 
 namespace BinaryCats\Rbac\Jobs;
 
+use BinaryCats\Rbac\Actions\StorePermission;
 use BinaryCats\Rbac\DiscoverAbilities;
 use BackedEnum;
 use Illuminate\Bus\Queueable;
@@ -9,7 +10,6 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Artisan;
 
 class ResetPermissions
 {
@@ -36,10 +36,7 @@ class ResetPermissions
     public function handle(): void
     {
         $this->permissions()
-            ->each(fn (BackedEnum $ability) => Artisan::call('permission:create-permission', [
-                'name' => $ability->value,
-                'guard' => $this->guard,
-            ]));
+            ->each(fn (BackedEnum $ability) => StorePermission::run($ability, $this->guard));
     }
 
     /**

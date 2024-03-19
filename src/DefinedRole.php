@@ -2,6 +2,7 @@
 
 namespace BinaryCats\Rbac;
 
+use BinaryCats\Rbac\Actions\SyncDefinedRole;
 use BinaryCats\Rbac\Contracts\DefinedRole as DefinedRoleContract;
 use Illuminate\Support\Str;
 use ReflectionClass;
@@ -36,5 +37,13 @@ abstract class DefinedRole implements DefinedRoleContract
         foreach($this->guards() as $guard) {
             SyncDefinedRole::run($this->name(), $guard, $this->{$guard}());
         }
+    }
+
+    /**
+     * @return array|string[]
+     */
+    protected function guards(): array
+    {
+        return $this->guards;
     }
 }

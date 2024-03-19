@@ -20,14 +20,15 @@
         "php": "^8.2",
         "illuminate/contracts": "^11.0",
         "lorisleiva/laravel-actions": "^2.8",
-        "spatie/laravel-collection-macros": "*",
+        "spatie/laravel-collection-macros": "^7.0",
         "spatie/laravel-package-tools": "^1.16",
         "spatie/laravel-permission": "^6.4"
     },
     "require-dev": {
         "laravel/pint": "^1.14",
         "nunomaduro/collision": "^8.1",
-        "orchestra/testbench": "^9.0"
+        "orchestra/testbench": "^9.0",
+        "spatie/phpunit-snapshot-assertions": "^5.1"
     },
     "autoload": {
         "psr-4": {
@@ -37,34 +38,11 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "BinaryCats\\Rbac\\Tests\\": "tests/",
-            "Workbench\\App\\": "workbench/app/"
+            "BinaryCats\\Rbac\\Tests\\": "tests/"
         }
-    },
-    "scripts": {
-        "post-autoload-dump": "@composer run prepare",
-        "clear": "@php vendor/bin/testbench package:purge-rbac --ansi",
-        "prepare": "@php vendor/bin/testbench package:discover --ansi",
-        "build": [
-            "@composer run prepare",
-            "@php vendor/bin/testbench workbench:build --ansi"
-        ],
-        "start": [
-            "Composer\\Config::disableProcessTimeout",
-            "@composer run build",
-            "@php vendor/bin/testbench serve"
-        ],
-        "analyse": "vendor/bin/phpstan analyse",
-        "test": "vendor/bin/pest",
-        "test-coverage": "vendor/bin/pest --coverage",
-        "format": "vendor/bin/pint"
     },
     "config": {
-        "sort-packages": true,
-        "allow-plugins": {
-            "pestphp/pest-plugin": true,
-            "phpstan/extension-installer": true
-        }
+        "sort-packages": true
     },
     "extra": {
         "laravel": {

@@ -2,38 +2,22 @@
 
 namespace BinaryCats\Rbac\Actions;
 
+use BackedEnum;
+use Illuminate\Support\Facades\Artisan;
 use Lorisleiva\Actions\Action;
-use Spatie\Permission\Contracts\Permission;
 
 class StorePermission extends Action
 {
     /**
-     * @param \Spatie\Permission\Contracts\Permission $permission
+     * @param \BackedEnum $permission
+     * @param string $guard
+     * @return void
      */
-    public function __construct(
-        protected Permission $permission
-    ) {
-    }
-
-    /**
-     * @return array[]
-     */
-    public function rules(): array
+    public function handle(BackedEnum $permission, string $guard): void
     {
-        return [
-            'name' => ['required', 'string', 'min:2', 'max:125'],
-            'guard_name' => ['required', 'string', 'min:2', 'max:125'],
-        ];
-    }
-
-    /**
-     * @param array $attributes
-     * @return \Spatie\Permission\Contracts\Permission
-     */
-    public function handle(array $attributes): Permission
-    {
-        $this->fill($attributes);
-
-        return $this->permission->firstOrCreate($this->validateAttributes());
+        Artisan::call('permission:create-permission', [
+            'name' => $permission->value,
+            'guard' => $guard,
+        ]);
     }
 }

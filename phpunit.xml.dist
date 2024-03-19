@@ -35,4 +35,8 @@
             <directory suffix=".php">./src</directory>
         </include>
     </source>
+    <php>
+        <env name="CACHE_STORE" value="array"/>
+        <env name="SESSION_DRIVER" value="array"/>
+    </php>
 </phpunit>

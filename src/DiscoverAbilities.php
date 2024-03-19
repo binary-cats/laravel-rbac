@@ -2,6 +2,7 @@
 
 namespace BinaryCats\Rbac;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use ReflectionClass;
 use ReflectionException;
@@ -22,15 +23,13 @@ class DiscoverAbilities
      *
      * @param string $abilitiesPath
      * @param string $basePath
-     * @return \Illuminate\Support\Collection
+     * @return \Illuminate\Support\Collection<\BackedEnum>
      */
-    public static function within(string $abilitiesPath, string $basePath)
+    public static function within(string $abilitiesPath, string $basePath): Collection
     {
-        $abilities = collect(static::getAbilities(
+        return collect(static::getAbilities(
             Finder::create()->files()->in($abilitiesPath), $basePath
         ));
-
-        return $abilities;
     }
 
     protected static function getAbilities($abilities, $basePath)
@@ -43,7 +42,8 @@ class DiscoverAbilities
                 $ability = new ReflectionClass(
                     static::classFromFile($ability, $basePath)
                 );
-            } catch (ReflectionException) {
+            } catch (ReflectionException $e) {
+                dd($e);
                 continue;
             }
 

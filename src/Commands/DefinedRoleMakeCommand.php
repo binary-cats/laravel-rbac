@@ -26,7 +26,7 @@ class DefinedRoleMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/stubs/defined-role.stub';
+        return __DIR__ . '/../../stubs/defined-role.stub';
     }
 
     /**

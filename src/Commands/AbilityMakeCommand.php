@@ -26,7 +26,7 @@ class AbilityMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/stubs/ability.stub';
+        return __DIR__ . '/../../stubs/ability.stub';
     }
 
     /**
