@@ -2,6 +2,7 @@
 
 namespace BinaryCats\Rbac;
 
+use BinaryCats\Rbac\Tests\Exceptions\RbacException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use ReflectionClass;
@@ -27,9 +28,16 @@ class DiscoverAbilities
      */
     public static function within(string $abilitiesPath, string $basePath): Collection
     {
-        return collect(static::getAbilities(
+        $abilities = collect(static::getAbilities(
             Finder::create()->files()->in($abilitiesPath), $basePath
         ));
+
+        \throw_if(
+            $abilities->pluck('value')->duplicates()->isNotEmpty(),
+            RbacException::rbacContainsDuplicateAbilities($abilities)
+        );
+
+        return $abilities;
     }
 
     protected static function getAbilities($abilities, $basePath)

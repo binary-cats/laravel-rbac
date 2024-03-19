@@ -6,11 +6,12 @@ use BinaryCats\Rbac\DiscoverAbilities;
 use BinaryCats\Rbac\Tests\Fixtures\Abilities\FooAbility;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use PHPUnit\Framework\Attributes\Test;
 use SplFileInfo;
 
 class DiscoverAbilitiesTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_will_handle_class_from_file_resolution_closure_callback(): void
     {
         DiscoverAbilities::guessClassNamesUsing(function(SplFileInfo $file, $basePath) {
@@ -38,11 +39,13 @@ class DiscoverAbilitiesTest extends TestCase
     #[Test]
     public function it_will_discover_the_abilities_in_a_given_path(): void
     {
+        DiscoverAbilities::$guessClassNamesUsingCallback = null;
+
         $result = DiscoverAbilities::within(
             __DIR__.'/Fixtures/Abilities',
             __DIR__.'/../'
         );
 
-        dd($result);
+        $this->assertCount(0, $result);
     }
 }
