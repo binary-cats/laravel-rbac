@@ -3,8 +3,8 @@
 namespace BinaryCats\Rbac\Tests\Commands;
 
 use BinaryCats\Rbac\Commands\RbacResetCommand;
-use BinaryCats\Rbac\Tests\TestCase;
 use BinaryCats\Rbac\Tests\Fixtures\RbacResetJob;
+use BinaryCats\Rbac\Tests\TestCase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Schema;
@@ -39,7 +39,6 @@ class RbacResetCommandTest extends TestCase
         $this->app['config']->set([
             'permission.table_names.permissions' => 'foo',
         ]);
-
 
         Schema::expects('hasTable')
             ->with('foo')

@@ -10,13 +10,14 @@ class StorePermission extends Action
 {
     /**
      * @param \BackedEnum $permission
-     * @param string $guard
+     * @param string      $guard
+     *
      * @return void
      */
     public function handle(BackedEnum $permission, string $guard): void
     {
         Artisan::call('permission:create-permission', [
-            'name' => $permission->value,
+            'name'  => $permission->value,
             'guard' => $guard,
         ]);
     }

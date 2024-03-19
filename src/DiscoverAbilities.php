@@ -20,16 +20,18 @@ class DiscoverAbilities
     public static $guessClassNamesUsingCallback;
 
     /**
-     * Discover all Ability enums
+     * Discover all Ability enums.
      *
      * @param string $abilitiesPath
      * @param string $basePath
+     *
      * @return \Illuminate\Support\Collection<\BackedEnum>
      */
     public static function within(string $abilitiesPath, string $basePath): Collection
     {
         $abilities = collect(static::getAbilities(
-            Finder::create()->files()->in($abilitiesPath), $basePath
+            Finder::create()->files()->in($abilitiesPath),
+            $basePath
         ));
 
         \throw_if(
@@ -44,8 +46,7 @@ class DiscoverAbilities
     {
         $enums = [];
 
-        foreach ($abilities as $ability)
-        {
+        foreach ($abilities as $ability) {
             try {
                 $ability = new ReflectionClass(
                     static::classFromFile($ability, $basePath)
@@ -54,12 +55,12 @@ class DiscoverAbilities
                 continue;
             }
 
-            if (! $ability->isEnum()) {
+            if (!$ability->isEnum()) {
                 continue;
             }
 
-            foreach($ability->name::cases() as $permission) {
-                $enums[] =  $permission;
+            foreach ($ability->name::cases() as $permission) {
+                $enums[] = $permission;
             }
         }
 
@@ -69,8 +70,9 @@ class DiscoverAbilities
     /**
      * Extract the class name from the given file path.
      *
-     * @param  \SplFileInfo  $file
-     * @param  string  $basePath
+     * @param \SplFileInfo $file
+     * @param string       $basePath
+     *
      * @return string
      */
     protected static function classFromFile(SplFileInfo $file, $basePath)
@@ -91,7 +93,8 @@ class DiscoverAbilities
     /**
      * Specify a callback to be used to guess class names.
      *
-     * @param  callable(SplFileInfo, string): string  $callback
+     * @param callable(SplFileInfo, string): string $callback
+     *
      * @return void
      */
     public static function guessClassNamesUsing(callable $callback)

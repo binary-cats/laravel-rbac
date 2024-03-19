@@ -12,12 +12,12 @@ use ReflectionClass;
  */
 abstract class DefinedRole implements DefinedRoleContract
 {
-    /** @var array|string[]  */
+    /** @var array|string[] */
     protected array $guards = [];
-    protected string $name='';
+    protected string $name = '';
 
     /**
-     * Guess the name of the role
+     * Guess the name of the role.
      *
      * @return string
      */
@@ -38,7 +38,7 @@ abstract class DefinedRole implements DefinedRoleContract
 
     public function handle(): void
     {
-        foreach($this->guards() as $guard) {
+        foreach ($this->guards() as $guard) {
             SyncDefinedRole::run($this->name(), $guard, $this->{$guard}());
         }
     }

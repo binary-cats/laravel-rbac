@@ -2,9 +2,9 @@
 
 namespace BinaryCats\Rbac\Jobs;
 
+use BackedEnum;
 use BinaryCats\Rbac\Actions\StorePermission;
 use BinaryCats\Rbac\DiscoverAbilities;
-use BackedEnum;
 use Illuminate\Bus\Queueable;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;

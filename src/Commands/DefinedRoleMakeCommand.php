@@ -4,19 +4,18 @@ namespace BinaryCats\Rbac\Commands;
 
 use Illuminate\Console\Concerns\CreatesMatchingTest;
 use Illuminate\Console\GeneratorCommand;
-use Illuminate\Support\Str;
 
 class DefinedRoleMakeCommand extends GeneratorCommand
 {
     use CreatesMatchingTest;
 
-    /** @var string  */
+    /** @var string */
     protected $name = 'make:role';
 
-    /** @var string  */
+    /** @var string */
     protected $description = 'Create a new DefinedRole class';
 
-    /** @var string  */
+    /** @var string */
     protected $type = 'DefinedRole';
 
     /**
@@ -26,17 +25,18 @@ class DefinedRoleMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/../../stubs/defined-role.stub';
+        return __DIR__.'/../../stubs/defined-role.stub';
     }
 
     /**
      * Get the default namespace for the class.
      *
      * @param string $rootNamespace
+     *
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\Roles';
+        return $rootNamespace.'\Roles';
     }
 }

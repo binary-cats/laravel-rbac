@@ -5,8 +5,8 @@ namespace BinaryCats\Rbac\Tests\Commands;
 use BinaryCats\Rbac\Commands\AbilityMakeCommand;
 use BinaryCats\Rbac\Tests\TestCase;
 use Illuminate\Support\Facades\File;
-use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\After;
+use PHPUnit\Framework\Attributes\Test;
 use Spatie\Snapshots\MatchesSnapshots;
 
 class AbilityMakeCommandTest extends TestCase

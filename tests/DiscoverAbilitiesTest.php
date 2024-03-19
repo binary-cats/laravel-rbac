@@ -14,7 +14,7 @@ class DiscoverAbilitiesTest extends TestCase
     #[Test]
     public function it_will_handle_class_from_file_resolution_closure_callback(): void
     {
-        DiscoverAbilities::guessClassNamesUsing(function(SplFileInfo $file, $basePath) {
+        DiscoverAbilities::guessClassNamesUsing(function (SplFileInfo $file, $basePath) {
             return Str::of($file->getRealPath())
                 ->replaceFirst($basePath, '')
                 ->trim(DIRECTORY_SEPARATOR)

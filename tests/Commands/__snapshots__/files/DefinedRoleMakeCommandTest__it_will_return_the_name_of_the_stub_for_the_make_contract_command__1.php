@@ -6,13 +6,13 @@ use BinaryCats\Rbac\DefinedRole;
 
 class FooRole extends DefinedRole
 {
-    /** @var array|string[]  */
+    /** @var array|string[] */
     protected array $guards = [
-        'web'
+        'web',
     ];
 
     /**
-     * List of enumerated permissions for the `web` guard
+     * List of enumerated permissions for the `web` guard.
      *
      * @return array
      */

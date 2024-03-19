@@ -10,13 +10,13 @@ class AbilityMakeCommand extends GeneratorCommand
 {
     use CreatesMatchingTest;
 
-    /** @var string  */
+    /** @var string */
     protected $name = 'make:ability';
 
-    /** @var string  */
+    /** @var string */
     protected $description = 'Create a new Ability enum';
 
-    /** @var string  */
+    /** @var string */
     protected $type = 'Ability';
 
     /**
@@ -26,25 +26,27 @@ class AbilityMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/../../stubs/ability.stub';
+        return __DIR__.'/../../stubs/ability.stub';
     }
 
     /**
      * Get the default namespace for the class.
      *
      * @param string $rootNamespace
+     *
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\Abilities';
+        return $rootNamespace.'\Abilities';
     }
 
     /**
      * Replace the class name for the given stub.
      *
-     * @param  string  $stub
-     * @param  string  $name
+     * @param string $stub
+     * @param string $name
+     *
      * @return string
      */
     protected function replaceClass($stub, $name)
@@ -52,7 +54,6 @@ class AbilityMakeCommand extends GeneratorCommand
         $subject = Str::of($name)
             ->classBasename()
             ->replaceLast($this->type, '');
-
 
         $stub = Str::of($stub)
             ->replace('{{ Subject }}', $subject)
