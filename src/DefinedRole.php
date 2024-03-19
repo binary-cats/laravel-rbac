@@ -7,10 +7,14 @@ use BinaryCats\Rbac\Contracts\DefinedRole as DefinedRoleContract;
 use Illuminate\Support\Str;
 use ReflectionClass;
 
+/**
+ * @property-read string $name
+ */
 abstract class DefinedRole implements DefinedRoleContract
 {
     /** @var array|string[]  */
     protected array $guards = [];
+    protected ?string $name=null;
 
     /**
      * Guess the name of the role
@@ -19,11 +23,11 @@ abstract class DefinedRole implements DefinedRoleContract
      */
     public function name(): string
     {
-        $reflection = new ReflectionClass($this);
-
-        if ($reflection->hasProperty('name')) {
+        if (null !== $this->name) {
             return $this->name;
         }
+
+        $reflection = new ReflectionClass($this);
 
         return Str::of($reflection->getName())
             ->classBasename()
