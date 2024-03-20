@@ -1,6 +1,6 @@
 <?php
 
-namespace BinaryCats\Rbac\Tests\Exceptions;
+namespace BinaryCats\Rbac\Exceptions;
 
 use BackedEnum;
 use Exception;

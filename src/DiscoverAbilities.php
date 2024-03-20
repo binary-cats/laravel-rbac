@@ -2,7 +2,7 @@
 
 namespace BinaryCats\Rbac;
 
-use BinaryCats\Rbac\Tests\Exceptions\RbacException;
+use BinaryCats\Rbac\Exceptions\RbacException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use ReflectionClass;
