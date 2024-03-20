@@ -11,6 +11,7 @@ class RbacException extends Exception
 {
     /**
      * @param \Illuminate\Support\Collection $abilities
+     *
      * @return static
      */
     public static function rbacContainsDuplicateAbilities(Collection $abilities): static
@@ -19,7 +20,8 @@ class RbacException extends Exception
             ->groupBy('value')
             ->filter(fn ($element) => $element->count() > 1)
             ->collapse()
-            ->map(fn(BackedEnum $enum) => Str::of(get_class($enum))
+            ->map(
+                fn (BackedEnum $enum) => Str::of(get_class($enum))
                 ->classBasename()
                 ->append(':', $enum->value)
             );

@@ -4,7 +4,6 @@ namespace BinaryCats\LaravelRbac\Jobs;
 
 use BackedEnum;
 use BinaryCats\LaravelRbac\Actions\StorePermission;
-use BinaryCats\LaravelRbac\DiscoverAbilities;
 use BinaryCats\LaravelRbac\Facades\Rbac;
 use Illuminate\Bus\Queueable;
 use Illuminate\Foundation\Bus\Dispatchable;
