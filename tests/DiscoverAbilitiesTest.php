@@ -1,10 +1,10 @@
 <?php
 
-namespace BinaryCats\Rbac\Tests;
+namespace BinaryCats\LaravelRbac\Tests;
 
-use BinaryCats\Rbac\DiscoverAbilities;
-use BinaryCats\Rbac\Exceptions\RbacException;
-use BinaryCats\Rbac\Tests\Fixtures\Abilities\FooAbility;
+use BinaryCats\LaravelRbac\DiscoverAbilities;
+use BinaryCats\LaravelRbac\Exceptions\RbacException;
+use BinaryCats\LaravelRbac\Tests\Fixtures\Abilities\FooAbility;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\Attributes\Test;
@@ -20,7 +20,7 @@ class DiscoverAbilitiesTest extends TestCase
                 ->replaceFirst($basePath, '')
                 ->trim(DIRECTORY_SEPARATOR)
                 ->after('/tests/')
-                ->prepend('BinaryCats/Rbac/Tests/')
+                ->prepend('BinaryCats/LaravelRbac/Tests/')
                 ->replaceLast('.php', '')
                 ->replace(DIRECTORY_SEPARATOR, '\\')
                 ->toString();
@@ -58,7 +58,7 @@ class DiscoverAbilitiesTest extends TestCase
                 ->replaceFirst($basePath, '')
                 ->trim(DIRECTORY_SEPARATOR)
                 ->after('/tests/')
-                ->prepend('BinaryCats/Rbac/Tests/')
+                ->prepend('BinaryCats/LaravelRbac/Tests/')
                 ->replaceLast('.php', '')
                 ->replace(DIRECTORY_SEPARATOR, '\\')
                 ->toString();

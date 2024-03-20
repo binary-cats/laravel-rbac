@@ -1,6 +1,6 @@
 <?php
 
-namespace BinaryCats\Rbac\Tests\Fixtures\AbilitiesWithDuplicateValues;
+namespace BinaryCats\LaravelRbac\Tests\Fixtures\AbilitiesWithDuplicateValues;
 
 enum BatDuplicatedAbility: string
 {

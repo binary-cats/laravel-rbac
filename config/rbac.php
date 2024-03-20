@@ -12,9 +12,9 @@ return [
     */
 
     'jobs' => [
-        \BinaryCats\Rbac\Jobs\FlushPermissionCache::class,
-        \BinaryCats\Rbac\Jobs\ResetPermissions::class,
-        \BinaryCats\Rbac\Jobs\SyncDefinedRoles::class,
+        \BinaryCats\LaravelRbac\Jobs\FlushPermissionCache::class,
+        \BinaryCats\LaravelRbac\Jobs\ResetPermissions::class,
+        \BinaryCats\LaravelRbac\Jobs\SyncDefinedRoles::class,
     ],
 
     /*

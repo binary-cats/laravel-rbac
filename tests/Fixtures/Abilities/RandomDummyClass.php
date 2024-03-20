@@ -1,6 +1,6 @@
 <?php
 
-namespace BinaryCats\Rbac\Tests\Fixtures\Abilities;
+namespace BinaryCats\LaravelRbac\Tests\Fixtures\Abilities;
 
 class RandomDummyClass
 {

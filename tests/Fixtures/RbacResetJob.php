@@ -1,6 +1,6 @@
 <?php
 
-namespace BinaryCats\Rbac\Tests\Fixtures;
+namespace BinaryCats\LaravelRbac\Tests\Fixtures;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Foundation\Bus\Dispatchable;

@@ -1,6 +1,6 @@
 <?php
 
-namespace BinaryCats\Rbac\Contracts;
+namespace BinaryCats\LaravelRbac\Contracts;
 
 interface DefinedRole
 {

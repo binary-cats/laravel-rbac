@@ -1,6 +1,6 @@
 <?php
 
-namespace BinaryCats\Rbac\Exceptions;
+namespace BinaryCats\LaravelRbac\Exceptions;
 
 use BackedEnum;
 use Exception;

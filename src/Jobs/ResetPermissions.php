@@ -1,11 +1,11 @@
 <?php
 
-namespace BinaryCats\Rbac\Jobs;
+namespace BinaryCats\LaravelRbac\Jobs;
 
 use BackedEnum;
-use BinaryCats\Rbac\Actions\StorePermission;
-use BinaryCats\Rbac\DiscoverAbilities;
-use BinaryCats\Rbac\Facades\Rbac;
+use BinaryCats\LaravelRbac\Actions\StorePermission;
+use BinaryCats\LaravelRbac\DiscoverAbilities;
+use BinaryCats\LaravelRbac\Facades\Rbac;
 use Illuminate\Bus\Queueable;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;

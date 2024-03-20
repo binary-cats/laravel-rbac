@@ -1,9 +1,9 @@
 <?php
 
-namespace BinaryCats\Rbac\Tests\Commands;
+namespace BinaryCats\LaravelRbac\Tests\Commands;
 
-use BinaryCats\Rbac\Commands\DefinedRoleMakeCommand;
-use BinaryCats\Rbac\Tests\TestCase;
+use BinaryCats\LaravelRbac\Commands\DefinedRoleMakeCommand;
+use BinaryCats\LaravelRbac\Tests\TestCase;
 use Illuminate\Support\Facades\File;
 use PHPUnit\Framework\Attributes\After;
 use PHPUnit\Framework\Attributes\Test;

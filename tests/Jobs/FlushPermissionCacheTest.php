@@ -1,9 +1,9 @@
 <?php
 
-namespace BinaryCats\Rbac\Tests\Jobs;
+namespace BinaryCats\LaravelRbac\Tests\Jobs;
 
-use BinaryCats\Rbac\Jobs\FlushPermissionCache;
-use BinaryCats\Rbac\Tests\TestCase;
+use BinaryCats\LaravelRbac\Jobs\FlushPermissionCache;
+use BinaryCats\LaravelRbac\Tests\TestCase;
 use Illuminate\Support\Facades\Cache;
 use Mockery\MockInterface;
 use PHPUnit\Framework\Attributes\Test;

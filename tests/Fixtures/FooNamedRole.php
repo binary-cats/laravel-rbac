@@ -1,8 +1,8 @@
 <?php
 
-namespace BinaryCats\Rbac\Tests\Fixtures;
+namespace BinaryCats\LaravelRbac\Tests\Fixtures;
 
-use BinaryCats\Rbac\DefinedRole;
+use BinaryCats\LaravelRbac\DefinedRole;
 
 class FooNamedRole extends DefinedRole
 {

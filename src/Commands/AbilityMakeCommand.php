@@ -1,6 +1,6 @@
 <?php
 
-namespace BinaryCats\Rbac\Commands;
+namespace BinaryCats\LaravelRbac\Commands;
 
 use Illuminate\Console\Concerns\CreatesMatchingTest;
 use Illuminate\Console\GeneratorCommand;

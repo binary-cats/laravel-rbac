@@ -1,12 +1,12 @@
 <?php
 
-namespace BinaryCats\Rbac\Tests\Jobs;
+namespace BinaryCats\LaravelRbac\Tests\Jobs;
 
-use BinaryCats\Rbac\Actions\SyncDefinedRole;
-use BinaryCats\Rbac\Jobs\SyncDefinedRoles;
-use BinaryCats\Rbac\Tests\Fixtures\FooNamedRole;
-use BinaryCats\Rbac\Tests\Fixtures\FooRole;
-use BinaryCats\Rbac\Tests\TestCase;
+use BinaryCats\LaravelRbac\Actions\SyncDefinedRole;
+use BinaryCats\LaravelRbac\Jobs\SyncDefinedRoles;
+use BinaryCats\LaravelRbac\Tests\Fixtures\FooNamedRole;
+use BinaryCats\LaravelRbac\Tests\Fixtures\FooRole;
+use BinaryCats\LaravelRbac\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
 class SyncDefinedRolesTest extends TestCase

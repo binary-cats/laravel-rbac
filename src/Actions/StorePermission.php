@@ -1,6 +1,6 @@
 <?php
 
-namespace BinaryCats\Rbac\Actions;
+namespace BinaryCats\LaravelRbac\Actions;
 
 use BackedEnum;
 use Illuminate\Support\Facades\Artisan;

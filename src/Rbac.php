@@ -1,6 +1,6 @@
 <?php
 
-namespace BinaryCats\Rbac;
+namespace BinaryCats\LaravelRbac;
 
 use Illuminate\Support\Collection;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace BinaryCats\Rbac\Tests;
+namespace BinaryCats\LaravelRbac\Tests;
 
-use BinaryCats\Rbac\RbacServiceProvider;
+use BinaryCats\LaravelRbac\RbacServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\CollectionMacros\CollectionMacroServiceProvider;
 use Spatie\Permission\PermissionServiceProvider;

@@ -1,11 +1,11 @@
 <?php
 
-namespace BinaryCats\Rbac\Tests\Exceptions;
+namespace BinaryCats\LaravelRbac\Tests\Exceptions;
 
-use BinaryCats\Rbac\Exceptions\RbacException;
-use BinaryCats\Rbac\Tests\Fixtures\AbilitiesWithDuplicateValues\BatDuplicatedAbility;
-use BinaryCats\Rbac\Tests\Fixtures\AbilitiesWithDuplicateValues\FooDuplicatedAbility;
-use BinaryCats\Rbac\Tests\TestCase;
+use BinaryCats\LaravelRbac\Exceptions\RbacException;
+use BinaryCats\LaravelRbac\Tests\Fixtures\AbilitiesWithDuplicateValues\BatDuplicatedAbility;
+use BinaryCats\LaravelRbac\Tests\Fixtures\AbilitiesWithDuplicateValues\FooDuplicatedAbility;
+use BinaryCats\LaravelRbac\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
 class RbacExceptionTest extends TestCase
