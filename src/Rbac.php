@@ -6,13 +6,13 @@ use Illuminate\Support\Collection;
 
 class Rbac
 {
-    /** @var string  */
+    /** @var string */
     protected string $abilitiesPath;
 
-    /** @var string  */
+    /** @var string */
     protected string $basePath;
 
-    /** @var \Illuminate\Support\Collection|null  */
+    /** @var \Illuminate\Support\Collection|null */
     protected ?Collection $abilities = null;
 
     /**
@@ -26,7 +26,7 @@ class Rbac
     }
 
     /**
-     * Return the list of all abilities in the application
+     * Return the list of all abilities in the application.
      */
     public function abilities(): Collection
     {
@@ -38,7 +38,7 @@ class Rbac
     }
 
     /**
-     * Discover Abilities in path
+     * Discover Abilities in path.
      */
     protected function discoverAbilities(): Collection
     {

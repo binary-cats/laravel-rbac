@@ -28,7 +28,7 @@ class RbacServiceProvider extends PackageServiceProvider
      */
     public function packageRegistered()
     {
-        $this->app->bind(Rbac::class, function(Application $app) {
+        $this->app->bind(Rbac::class, function (Application $app) {
             return new Rbac(
                 abilitiesPath: $app['config']->get('rbac.path'),
                 basePath: $app->basePath()
