@@ -5,6 +5,7 @@ namespace BinaryCats\Rbac\Jobs;
 use BackedEnum;
 use BinaryCats\Rbac\Actions\StorePermission;
 use BinaryCats\Rbac\DiscoverAbilities;
+use BinaryCats\Rbac\Facades\Rbac;
 use Illuminate\Bus\Queueable;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -19,14 +20,12 @@ class ResetPermissions
     use SerializesModels;
 
     protected string $guard;
-    protected string $abilityPath;
 
     /**
      * @param string|null $guard
      */
     public function __construct(string $guard = null)
     {
-        $this->abilityPath = config('rbac.path');
         $this->guard = $guard ?? config('auth.defaults.guard');
     }
 
@@ -44,9 +43,6 @@ class ResetPermissions
      */
     protected function permissions(): Collection
     {
-        return DiscoverAbilities::within(
-            abilitiesPath: $this->abilityPath,
-            basePath: app()->basePath()
-        );
+        return Rbac::abilities();
     }
 }
