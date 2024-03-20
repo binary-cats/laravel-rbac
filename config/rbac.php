@@ -1,7 +1,5 @@
 <?php
 
-use App\Enums\Ability;
-
 return [
 
     /*
