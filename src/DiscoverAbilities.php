@@ -1,8 +1,8 @@
 <?php
 
-namespace BinaryCats\Rbac;
+namespace BinaryCats\LaravelRbac;
 
-use BinaryCats\Rbac\Exceptions\RbacException;
+use BinaryCats\LaravelRbac\Exceptions\RbacException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use ReflectionClass;

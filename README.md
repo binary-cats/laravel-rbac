@@ -4,15 +4,15 @@
 [![run-tests](https://github.com/binary-cats/rbac/actions/workflows/run-tests.yml/badge.svg)](https://github.com/binary-cats/rbac/actions/workflows/run-tests.yml)
 [![GitHub Code Style Action Status](https://github.styleci.io/repos/773171043/shield?branch=main&style=flat-square)](https://github.com/binary-cats/rbac/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 
-Opinionated extension for [spatie/laravel-permissions](https://spatie.be/docs/laravel-permission/v6/introduction).
-When your permission list grows and maintenance becomes an issue, this package offers simple way of defining roles and their permissions.  
+Enhance Laravel 11 with opinionated extension for [spatie/laravel-permissions](https://spatie.be/docs/laravel-permission/v6/introduction).
+Before your permission list grows and maintenance becomes an issue, this package offers simple way of defining roles and their permissions.  
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require binary-cats/rbac
+composer require binary-cats/laravel-rbac
 ```
 
 You can publish the config file with:
@@ -35,9 +35,9 @@ return [
     */
 
     'jobs' => [
-        \BinaryCats\Rbac\Jobs\FlushPermissionCache::class,
-        \BinaryCats\Rbac\Jobs\ResetPermissions::class,
-        \BinaryCats\Rbac\Jobs\SyncDefinedRoles::class,
+        \BinaryCats\LaravelRbac\Jobs\FlushPermissionCache::class,
+        \BinaryCats\LaravelRbac\Jobs\ResetPermissions::class,
+        \BinaryCats\LaravelRbac\Jobs\SyncDefinedRoles::class,
     ],
 
     /*
@@ -74,7 +74,13 @@ php artisan rbac:reset
 In a simple setup we usually have two basic parts of an RBAC: a permission and a role. 
 Permissions are usually grouped by functional or business logic domain and a Role encapsulates them for a specific guard.
 
-To avoid collision with `spatie/laravel-permission` we are going to use `BackedEnum` Ability to hold out enumerated permissions:
+1. [Create Abilities](#abilities)
+2. [Define Roles](#defined-roles)
+3. [Connect the dots](#connect-the-dots)
+
+### Abilities
+
+To avoid collision with `spatie/laravel-permission` we are going to use `BackedEnum` Ability enums to hold out enumerated permissions:
 You can read more on using `enums` as permissions at the [official docs](https://spatie.be/docs/laravel-permission/v6/basic-usage/enums). 
 
 To create an Ability: 
@@ -111,7 +117,7 @@ php artisan make:role EditorRole
 This will generate an `EditorRole` within `App\Roles`:
 
 ```php
-use BinaryCats\Rbac\DefinedRole;
+use BinaryCats\LaravelRbac\DefinedRole;
 
 class EditorRole extends DefinedRole
 {
@@ -136,8 +142,10 @@ This class contains a (now testable!) configuration definition for the role and 
 We can now adjust it like so:
 
 ```php
+namespace App\Roles;
+
 use App\Abilities\PostAbility;
-use BinaryCats\Rbac\DefinedRole;
+use BinaryCats\LaravelRbac\DefinedRole;
 
 class EditorRole extends DefinedRole
 {
@@ -162,6 +170,19 @@ class EditorRole extends DefinedRole
 }
 ```
 Now you are confident a specific role has specific permissions!
+
+### Connect the dots
+
+Now that we have the abilities and roles, simply register role with `rbac.php` config:
+
+```php
+    'roles' => [
+        \App\Roles\EditorRole::class,
+        ...
+    ],
+```
+
+When you run `rbac:reset` next time, your RBAC will be reset automatically.
 
 ## Integration
 

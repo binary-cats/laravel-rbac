@@ -1,8 +1,8 @@
 <?php
 
-namespace BinaryCats\Rbac\Jobs;
+namespace BinaryCats\LaravelRbac\Jobs;
 
-use BinaryCats\Rbac\Contracts\DefinedRole;
+use BinaryCats\LaravelRbac\Contracts\DefinedRole;
 use Illuminate\Bus\Queueable;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;

@@ -1,11 +1,11 @@
 <?php
 
-namespace BinaryCats\Rbac\Tests\Jobs;
+namespace BinaryCats\LaravelRbac\Tests\Jobs;
 
-use BinaryCats\Rbac\Actions\StorePermission;
-use BinaryCats\Rbac\DiscoverAbilities;
-use BinaryCats\Rbac\Jobs\ResetPermissions;
-use BinaryCats\Rbac\Tests\TestCase;
+use BinaryCats\LaravelRbac\Actions\StorePermission;
+use BinaryCats\LaravelRbac\DiscoverAbilities;
+use BinaryCats\LaravelRbac\Jobs\ResetPermissions;
+use BinaryCats\LaravelRbac\Tests\TestCase;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\Attributes\Test;
@@ -21,7 +21,7 @@ class ResetPermissionsTest extends TestCase
                 ->replaceFirst($basePath, '')
                 ->trim(DIRECTORY_SEPARATOR)
                 ->after('/tests/')
-                ->prepend('BinaryCats/Rbac/Tests/')
+                ->prepend('BinaryCats/LaravelRbac/Tests/')
                 ->replaceLast('.php', '')
                 ->replace(DIRECTORY_SEPARATOR, '\\')
                 ->toString();

@@ -1,9 +1,9 @@
 <?php
 
-namespace BinaryCats\Rbac\Tests\Fixtures;
+namespace BinaryCats\LaravelRbac\Tests\Fixtures;
 
-use BinaryCats\Rbac\DefinedRole;
-use BinaryCats\Rbac\Tests\Fixtures\Abilities\FooAbility;
+use BinaryCats\LaravelRbac\DefinedRole;
+use BinaryCats\LaravelRbac\Tests\Fixtures\Abilities\FooAbility;
 
 class FooRole extends DefinedRole
 {

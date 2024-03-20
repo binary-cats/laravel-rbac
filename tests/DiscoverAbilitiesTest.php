@@ -1,9 +1,10 @@
 <?php
 
-namespace BinaryCats\Rbac\Tests;
+namespace BinaryCats\LaravelRbac\Tests;
 
-use BinaryCats\Rbac\DiscoverAbilities;
-use BinaryCats\Rbac\Tests\Fixtures\Abilities\FooAbility;
+use BinaryCats\LaravelRbac\DiscoverAbilities;
+use BinaryCats\LaravelRbac\Exceptions\RbacException;
+use BinaryCats\LaravelRbac\Tests\Fixtures\Abilities\FooAbility;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\Attributes\Test;
@@ -19,7 +20,7 @@ class DiscoverAbilitiesTest extends TestCase
                 ->replaceFirst($basePath, '')
                 ->trim(DIRECTORY_SEPARATOR)
                 ->after('/tests/')
-                ->prepend('BinaryCats/Rbac/Tests/')
+                ->prepend('BinaryCats/LaravelRbac/Tests/')
                 ->replaceLast('.php', '')
                 ->replace(DIRECTORY_SEPARATOR, '\\')
                 ->toString();
@@ -47,5 +48,27 @@ class DiscoverAbilitiesTest extends TestCase
         );
 
         $this->assertCount(0, $result);
+    }
+
+    #[Test]
+    public function it_will_throw_a_duplicate_exception_when_there_is_a_duplicate_permission(): void
+    {
+        DiscoverAbilities::guessClassNamesUsing(function (SplFileInfo $file, $basePath) {
+            return Str::of($file->getRealPath())
+                ->replaceFirst($basePath, '')
+                ->trim(DIRECTORY_SEPARATOR)
+                ->after('/tests/')
+                ->prepend('BinaryCats/LaravelRbac/Tests/')
+                ->replaceLast('.php', '')
+                ->replace(DIRECTORY_SEPARATOR, '\\')
+                ->toString();
+        });
+
+        $this->expectException(RbacException::class);
+
+        DiscoverAbilities::within(
+            __DIR__.'/Fixtures/AbilitiesWithDuplicateValues',
+            __DIR__.'/../'
+        );
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace BinaryCats\Rbac\Tests\Actions;
+namespace BinaryCats\LaravelRbac\Tests\Actions;
 
-use BinaryCats\Rbac\Actions\SyncDefinedRole;
-use BinaryCats\Rbac\Tests\Fixtures\Abilities\FooAbility;
-use BinaryCats\Rbac\Tests\TestCase;
+use BinaryCats\LaravelRbac\Actions\SyncDefinedRole;
+use BinaryCats\LaravelRbac\Tests\Fixtures\Abilities\FooAbility;
+use BinaryCats\LaravelRbac\Tests\TestCase;
 use Illuminate\Support\Facades\Artisan;
 use PHPUnit\Framework\Attributes\Test;
 

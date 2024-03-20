@@ -1,6 +1,6 @@
 <?php
 
-namespace BinaryCats\Rbac\Jobs;
+namespace BinaryCats\LaravelRbac\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Foundation\Bus\Dispatchable;

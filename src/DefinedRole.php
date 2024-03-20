@@ -1,9 +1,9 @@
 <?php
 
-namespace BinaryCats\Rbac;
+namespace BinaryCats\LaravelRbac;
 
-use BinaryCats\Rbac\Actions\SyncDefinedRole;
-use BinaryCats\Rbac\Contracts\DefinedRole as DefinedRoleContract;
+use BinaryCats\LaravelRbac\Actions\SyncDefinedRole;
+use BinaryCats\LaravelRbac\Contracts\DefinedRole as DefinedRoleContract;
 use Illuminate\Support\Str;
 use ReflectionClass;
 

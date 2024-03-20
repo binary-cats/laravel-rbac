@@ -1,13 +1,13 @@
 {
-    "name": "binary-cats/rbac",
-    "description": "Enum-backed RBAC extension of spatie/laravel-permission",
+    "name": "binary-cats/laravel-rbac",
+    "description": "Laravel 11 enum-backed RBAC extension of spatie/laravel-permission",
     "keywords": [
         "binary-cats",
         "enum",
         "laravel",
         "rbac"
     ],
-    "homepage": "https://github.com/binary-cats/rbac",
+    "homepage": "https://github.com/binary-cats/laravel-rbac",
     "license": "MIT",
     "authors": [
         {
@@ -31,14 +31,17 @@
     },
     "autoload": {
         "psr-4": {
-            "BinaryCats\\Rbac\\": "src/",
-            "BinaryCats\\Rbac\\Database\\Factories\\": "database/factories/"
+            "BinaryCats\\LaravelRbac\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "BinaryCats\\Rbac\\Tests\\": "tests/"
+            "BinaryCats\\LaravelRbac\\Tests\\": "tests/"
         }
+    },
+    "suggest": {
+        "binary-cats/laravel-mailgun-webhooks": "Handle Mailgun webhooks in your Laravel application",
+        "binary-cats/laravel-sku": "Generate SKUs for Eloquent models"
     },
     "scripts": {
         "test": "vendor/bin/phpunit"
@@ -49,10 +52,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "BinaryCats\\Rbac\\RbacServiceProvider"
+                "BinaryCats\\LaravelRbac\\RbacServiceProvider"
             ],
             "aliases": {
-                "Rbac": "BinaryCats\\Rbac\\Facades\\Rbac"
+                "Rbac": "BinaryCats\\LaravelRbac\\Facades\\Rbac"
             }
        },
         "branch-alias": {
