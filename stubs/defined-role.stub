@@ -2,10 +2,15 @@
 
 namespace {{ namespace }};
 
-use BinaryCats\Rbac\DefinedRole;
+use BinaryCats\LaravelRbac\DefinedRole;
 
 class {{ class }} extends DefinedRole
 {
+    /**
+     * Name of the role
+     */
+    protected string $name = '';
+
     /** @var array|string[]  */
     protected array $guards = [
         'web'
