@@ -2,6 +2,14 @@
 
 All notable changes to `binary-cats/rbac` will be documented in this file.
 
+## 1.1.1 - 2024-03-22
+
+### What's Changed
+
+* Update namespace within role stub by @cyrillkalita in https://github.com/binary-cats/laravel-rbac/pull/7
+
+**Full Changelog**: https://github.com/binary-cats/laravel-rbac/compare/1.1.0...1.1.1
+
 ## 1.1.0 - 2024-03-20
 
 ### What's Changed
