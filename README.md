@@ -1,8 +1,10 @@
+![](https://banners.beyondco.de/Laravel%20RBAC.png?theme=light&packageManager=composer+require&packageName=binary-cats%2Flaravel-rbac&pattern=architect&style=style_1&description=Manage+your+spatie%2Flaravel-permission+lists+with+well-defined+roles&md=1&showWatermark=1&fontSize=100px&images=lock-closed)
+
 # Laravel RBAC
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/binary-cats/rbac.svg?style=flat-square)](https://packagist.org/packages/binary-cats/rbac)
-[![run-tests](https://github.com/binary-cats/rbac/actions/workflows/run-tests.yml/badge.svg)](https://github.com/binary-cats/rbac/actions/workflows/run-tests.yml)
-[![GitHub Code Style Action Status](https://github.styleci.io/repos/773171043/shield?branch=main&style=flat-square)](https://github.com/binary-cats/rbac/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/binary-cats/laravel-rbac.svg?style=flat-square)](https://packagist.org/packages/binary-cats/laravel-rbac)
+[![run-tests](https://img.shields.io/github/actions/workflow/status/binary-cats/laravel-rbac/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/binary-cats/laravel-rbac/actions/workflows/run-tests.yml)
+[![GitHub Code Style Action Status](https://github.styleci.io/repos/773171043/shield?branch=main)](https://github.com/binary-cats/laravel-rbac/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 
 Enhance Laravel 11 with opinionated extension for [spatie/laravel-permissions](https://spatie.be/docs/laravel-permission/v6/introduction).
 Before your permission list grows and maintenance becomes an issue, this package offers simple way of defining roles and their permissions.  
