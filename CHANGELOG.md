@@ -2,6 +2,10 @@
 
 All notable changes to `binary-cats/rbac` will be documented in this file.
 
+## 1.1.2 | Update dependabot - 2024-04-15
+
+Update dependabot dependencies
+
 ## 1.1.1 - 2024-03-22
 
 ### What's Changed
