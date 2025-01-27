@@ -2,6 +2,16 @@
 
 All notable changes to `binary-cats/rbac` will be documented in this file.
 
+## 1.1.3 | Update dependabot - 2025-01-27
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.0.0 to 2.1.0 by @dependabot in https://github.com/binary-cats/laravel-rbac/pull/9
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/binary-cats/laravel-rbac/pull/10
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/binary-cats/laravel-rbac/pull/12
+
+**Full Changelog**: https://github.com/binary-cats/laravel-rbac/compare/1.1.2...1.1.3
+
 ## 1.1.2 | Update dependabot - 2024-04-15
 
 Update dependabot dependencies
