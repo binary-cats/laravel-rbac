@@ -2,6 +2,11 @@
 
 All notable changes to `binary-cats/rbac` will be documented in this file.
 
+## 1.2 | Add Laravel 12 dependency - 2025-02-19
+
+- Upgrade dependencies to allow for Laravel 12
+- Update text matrix
+
 ## 1.1.3 | Update dependabot - 2025-01-27
 
 ### What's Changed
