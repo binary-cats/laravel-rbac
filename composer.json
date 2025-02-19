@@ -18,7 +18,7 @@
     ],
     "require": {
         "php": "^8.2",
-        "illuminate/contracts": "^11.0",
+        "illuminate/contracts": "^11.0|^12.0",
         "lorisleiva/laravel-actions": "^2.8",
         "spatie/laravel-collection-macros": "^7.0",
         "spatie/laravel-package-tools": "^1.16",
@@ -27,7 +27,7 @@
     "require-dev": {
         "laravel/pint": "^1.14",
         "nunomaduro/collision": "^8.1",
-        "orchestra/testbench": "^9.0"
+        "orchestra/testbench": "^9.0|^10.0"
     },
     "autoload": {
         "psr-4": {
