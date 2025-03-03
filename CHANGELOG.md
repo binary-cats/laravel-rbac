@@ -2,6 +2,15 @@
 
 All notable changes to `binary-cats/rbac` will be documented in this file.
 
+## 1.3 - 2025-03-03
+
+### What's Changed
+
+* Update Laravel and Laravel Collection Macros versions by @cyrillkalita in https://github.com/binary-cats/laravel-rbac/pull/14
+* Adjust testing matrix to include Laravel 12
+
+**Full Changelog**: https://github.com/binary-cats/laravel-rbac/compare/1.2.0...1.3
+
 ## 1.2 | Add Laravel 12 dependency - 2025-02-19
 
 - Upgrade dependencies to allow for Laravel 12
