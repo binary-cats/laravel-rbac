@@ -28,7 +28,7 @@ class RbacServiceProvider extends PackageServiceProvider
         parent::packageBooted();
 
         $this->publishes([
-            __DIR__.'/../stubs/ability.stub' => base_path('stubs/ability.stub'),
+            __DIR__.'/../stubs/ability.stub'      => base_path('stubs/ability.stub'),
             __DIR__.'/../stubs/defined-role.stub' => base_path('stubs/defined-role.stub'),
         ], ['rbac-stubs', 'stubs']);
     }
