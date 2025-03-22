@@ -2,6 +2,18 @@
 
 All notable changes to `binary-cats/rbac` will be documented in this file.
 
+## v1.4 - 2025-03-22
+
+### What's Changed
+
+* Add option to publish stub files by @briavers in https://github.com/binary-cats/laravel-rbac/pull/15
+
+### New Contributors
+
+* @briavers made their first contribution in https://github.com/binary-cats/laravel-rbac/pull/15
+
+**Full Changelog**: https://github.com/binary-cats/laravel-rbac/compare/1.3...1.4.0
+
 ## 1.3 - 2025-03-03
 
 ### What's Changed
