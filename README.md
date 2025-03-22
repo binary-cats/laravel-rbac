@@ -69,6 +69,12 @@ return [
 ];
 ```
 
+You can publish the stub files with:
+
+```bash
+php artisan vendor:publish --tag="rbac-stubs"
+```
+
 ## Usage
 
 ```bash
