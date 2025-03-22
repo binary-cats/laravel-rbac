@@ -25,7 +25,9 @@ class DefinedRoleMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__.'/../../stubs/defined-role.stub';
+        return file_exists($customPath = base_path('/stubs/defined-role.stub'))
+            ? $customPath
+            : __DIR__.'/../../stubs/defined-role.stub';
     }
 
     /**
