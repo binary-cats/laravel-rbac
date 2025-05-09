@@ -14,12 +14,12 @@ class StorePermission extends Action
     }
 
     /**
-     * Handle storing a permission
+     * Handle storing a permission.
      */
     public function handle(BackedEnum|string $permission, string $guard): void
     {
         if ($permission instanceof BackedEnum) {
-            $permission = $permission->value;    
+            $permission = $permission->value;
         }
 
         $this->permission::findOrCreate($permission, $guard);

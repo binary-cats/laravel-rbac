@@ -34,7 +34,7 @@ class RbacResetCommandTest extends TestCase
         $this->app['config']->set([
             'permission.table_names' => ['permissions' => 'foo'],
         ]);
-        
+
         Schema::expects('hasTable')
             ->with('foo')
             ->andReturnFalse();

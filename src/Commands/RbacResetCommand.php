@@ -27,16 +27,16 @@ class RbacResetCommand extends Command
      */
     public function handle(): int
     {
-        if (! $this->databaseReady()) {
+        if (!$this->databaseReady()) {
             $this->error('DB is not ready. Please run migrations.');
 
             return self::INVALID;
         }
 
-        $this->jobs()->each(function(string $job) {
+        $this->jobs()->each(function (string $job) {
             $this->components->task(
                 $job,
-                fn() => $this->laravel->make($job)->dispatchSync()
+                fn () => $this->laravel->make($job)->dispatchSync()
             );
         });
 
@@ -61,7 +61,7 @@ class RbacResetCommand extends Command
         $tables = config('permission.table_names', []);
 
         return collect($tables)
-            ->map(fn(string $table) => Schema::hasTable($table))
+            ->map(fn (string $table) => Schema::hasTable($table))
             ->reject()
             ->isEmpty();
     }

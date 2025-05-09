@@ -14,7 +14,7 @@ class SyncDefinedRole extends Action
     }
 
     /**
-     * Handle syncing a defined role
+     * Handle syncing a defined role.
      */
     public function handle(string $name, string $guard, array $permissions): void
     {
