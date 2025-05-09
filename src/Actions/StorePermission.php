@@ -8,20 +8,20 @@ use Spatie\Permission\Contracts\Permission;
 
 class StorePermission extends Action
 {
-    /**
-     * Handle storing a permission
-     */
-    public function handle(BackedEnum $permission, string $guard): void
-    {
-        $this->model()::findOrCreate($permission->value, $guard);
+    public function __construct(
+        protected readonly Permission $permission
+    ) {
     }
 
     /**
-     * Resolve permission model
+     * Handle storing a permission
      */
-    protected function model(): Permission
+    public function handle(BackedEnum|string $permission, string $guard): void
     {
-        dd(config('permission'));
-        return app(Permission::class);
+        if ($permission instanceof BackedEnum) {
+            $permission = $permission->value;    
+        }
+
+        $this->permission::findOrCreate($permission, $guard);
     }
 }

@@ -7,22 +7,15 @@ use BinaryCats\LaravelRbac\Tests\TestCase;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Schema;
-use PHPUnit\Framework\Attributes\Before;
 use PHPUnit\Framework\Attributes\Test;
 
 class RbacResetCommandTest extends TestCase
 {
-    #[Before]
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        Bus::fake();
-    }
-
     #[Test]
-    public function it_will_dispatch_all_configured_commands()
+    public function it_will_dispatch_all_configured_commands(): void
     {
+        Bus::fake();
+
         $this->app['config']->set([
             'rbac.jobs' => [RbacResetJob::class],
         ]);
@@ -36,10 +29,12 @@ class RbacResetCommandTest extends TestCase
     #[Test]
     public function it_will_not_dispatch_if_not_migrated(): void
     {
-        $this->app['config']->set([
-            'permission.table_names.permissions' => 'foo',
-        ]);
+        Bus::fake();
 
+        $this->app['config']->set([
+            'permission.table_names' => ['permissions' => 'foo'],
+        ]);
+        
         Schema::expects('hasTable')
             ->with('foo')
             ->andReturnFalse();

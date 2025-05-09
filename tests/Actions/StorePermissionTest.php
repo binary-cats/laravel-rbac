@@ -16,7 +16,7 @@ class StorePermissionTest extends TestCase
 
         $this->assertDatabaseHas(config('permission.table_names.permissions'), [
             'name'  => 'una',
-            'guard' => 'web',
+            'guard_name' => 'web',
         ]);
     }
 }

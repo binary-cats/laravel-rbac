@@ -8,6 +8,11 @@ use Spatie\Permission\Contracts\Role;
 
 class SyncDefinedRole extends Action
 {
+    public function __construct(
+        protected readonly Role $role
+    ) {
+    }
+
     /**
      * Handle syncing a defined role
      */
@@ -19,16 +24,7 @@ class SyncDefinedRole extends Action
                 default                           => (string) $permission
             });
 
-        $this->model()
-            ->findOrCreate($name, $guard)
+        $this->role::findOrCreate($name, $guard)
             ->syncPermissions($permissions);
-    }
-
-    /**
-     * Resolve role model
-     */
-    protected function model(): Role
-    {
-        return app(Role::class);
     }
 }

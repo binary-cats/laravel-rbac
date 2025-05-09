@@ -6,9 +6,10 @@ build
 composer.lock
 coverage
 docs
+vendor
+workbench
+node_modules
 phpunit.xml
 phpstan.neon
 repomix-output.*
 testbench.yaml
-vendor
-node_modules

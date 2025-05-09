@@ -58,9 +58,11 @@ class RbacResetCommand extends Command
      */
     protected function databaseReady(): bool
     {
-        $value = config('permission.table_names');
+        $tables = config('permission.table_names', []);
 
-        return collect($value)
-            ->validate(fn ($table) => Schema::hasTable($table));
+        return collect($tables)
+            ->map(fn(string $table) => Schema::hasTable($table))
+            ->reject()
+            ->isEmpty();
     }
 }
