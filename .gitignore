@@ -1,3 +1,4 @@
+.cursor
 .idea
 .php-cs-fixer.cache
 .phpunit.cache
@@ -7,6 +8,7 @@ coverage
 docs
 phpunit.xml
 phpstan.neon
+repomix-output.*
 testbench.yaml
 vendor
 node_modules
