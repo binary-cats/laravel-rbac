@@ -10,7 +10,7 @@ use Spatie\Permission\PermissionServiceProvider;
 class TestCase extends Orchestra
 {
     /**
-     * Get the package providers fopr registrations
+     * Get the package providers fopr registrations.
      *
      * @param \Illuminate\Foundation\Application $app
      */
@@ -23,16 +23,16 @@ class TestCase extends Orchestra
     }
 
     /**
-     * Define the environment
+     * Define the environment.
      */
     protected function defineEnvironment($app): void
     {
         tap($app['config'], function (Repository $config) {
             $config->set('database.default', 'sqlite');
             $config->set('database.connections.sqlite', [
-            'driver'   => 'sqlite',
-            'database' => ':memory:',
-            'prefix'   => '',
+                'driver'   => 'sqlite',
+                'database' => ':memory:',
+                'prefix'   => '',
             ]);
         });
 

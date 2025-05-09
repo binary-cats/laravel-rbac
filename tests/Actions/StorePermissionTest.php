@@ -15,7 +15,7 @@ class StorePermissionTest extends TestCase
         StorePermission::run(FooAbility::One, 'web');
 
         $this->assertDatabaseHas(config('permission.table_names.permissions'), [
-            'name'  => 'una',
+            'name'       => 'una',
             'guard_name' => 'web',
         ]);
     }

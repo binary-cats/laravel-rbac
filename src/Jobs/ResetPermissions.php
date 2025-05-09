@@ -23,7 +23,7 @@ class ResetPermissions
     /**
      * @param string|null $guard
      */
-    public function __construct(string $guard = null)
+    public function __construct(?string $guard = null)
     {
         $this->guard = $guard ?? config('auth.defaults.guard');
     }

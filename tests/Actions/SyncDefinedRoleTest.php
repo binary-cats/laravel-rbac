@@ -23,7 +23,7 @@ class SyncDefinedRoleTest extends TestCase
         ]);
 
         $this->assertDatabaseHas(config('permission.table_names.roles'), [
-            'name'  => 'foo role',
+            'name'       => 'foo role',
             'guard_name' => 'web',
         ]);
     }
