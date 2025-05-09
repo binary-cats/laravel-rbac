@@ -8,7 +8,7 @@
 [![run-tests](https://img.shields.io/github/actions/workflow/status/binary-cats/laravel-rbac/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/binary-cats/laravel-rbac/actions/workflows/run-tests.yml)
 [![GitHub Code Style Action Status](https://github.styleci.io/repos/773171043/shield?branch=main)](https://github.com/binary-cats/laravel-rbac/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 
-Enhance Laravel 11 with opinionated extension for [spatie/laravel-permissions](https://spatie.be/docs/laravel-permission/v6/introduction).
+Enhance your Laravel with opinionated extension for [spatie/laravel-permissions](https://spatie.be/docs/laravel-permission/v6/introduction).
 Before your permission list grows and maintenance becomes an issue, this package offers simple way of defining roles and their permissions.  
 
 ## Installation

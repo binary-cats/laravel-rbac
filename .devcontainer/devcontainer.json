@@ -1,0 +1,27 @@
+{
+    "name": "Laravel RBAC",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "."
+    },
+    "features": {},
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "bmewburn.vscode-intelephense-client",
+          "calebporzio.better-phpunit",
+          "laravel.vscode-laravel",
+          "mikestead.dotenv",
+          "ms-azuretools.vscode-docker",
+          "php.intelephense"
+        ],
+        "settings": {
+          "intelephense.environment.phpVersion": "8.3"
+        }
+      }
+    },
+    "remoteUser": "vscode",
+    "postCreateCommand": "",
+    "forwardPorts": [],
+    "portsAttributes": {}
+  }

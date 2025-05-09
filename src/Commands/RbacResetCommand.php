@@ -24,45 +24,45 @@ class RbacResetCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return int
      */
-    public function handle()
+    public function handle(): int
     {
-        if ($this->databaseReady()) {
-            $this->withProgressBar($this->jobs(), fn ($job) => $job->dispatch());
-            $this->newLine();
-            $this->info('RBAC Reset Complete');
-        } else {
-            $this->error('DB is not ready');
+        if (!$this->databaseReady()) {
+            $this->error('DB is not ready. Please run migrations.');
+
+            return self::INVALID;
         }
+
+        $this->jobs()->each(function (string $job) {
+            $this->components->task(
+                $job,
+                fn () => $this->laravel->make($job)->dispatchSync()
+            );
+        });
 
         return self::SUCCESS;
     }
 
     /**
      * Create the jobs.
-     *
-     * @return \Illuminate\Support\Collection
      */
     protected function jobs(): Collection
     {
         $value = config('rbac.jobs');
 
-        return collect($value)
-            ->map(fn ($job) => app()->make($job));
+        return collect($value);
     }
 
     /**
      * True if the Database is prepared.
-     *
-     * @return bool
      */
     protected function databaseReady(): bool
     {
-        $value = config('permission.table_names');
+        $tables = config('permission.table_names', []);
 
-        return collect($value)
-            ->validate(fn ($table) => Schema::hasTable($table));
+        return collect($tables)
+            ->map(fn (string $table) => Schema::hasTable($table))
+            ->reject()
+            ->isEmpty();
     }
 }

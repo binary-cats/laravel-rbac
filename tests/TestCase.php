@@ -3,44 +3,38 @@
 namespace BinaryCats\LaravelRbac\Tests;
 
 use BinaryCats\LaravelRbac\RbacServiceProvider;
+use Illuminate\Contracts\Config\Repository;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Spatie\CollectionMacros\CollectionMacroServiceProvider;
 use Spatie\Permission\PermissionServiceProvider;
 
 class TestCase extends Orchestra
 {
-    protected function getPackageProviders($app)
+    /**
+     * Get the package providers fopr registrations.
+     *
+     * @param \Illuminate\Foundation\Application $app
+     */
+    protected function getPackageProviders($app): array
     {
         return [
-            CollectionMacroServiceProvider::class,
             PermissionServiceProvider::class,
             RbacServiceProvider::class,
         ];
     }
 
     /**
-     * Resolve application Console Kernel implementation.
-     *
-     * @param \Illuminate\Foundation\Application $app
-     *
-     * @return void
+     * Define the environment.
      */
-    protected function resolveApplicationConsoleKernel($app)
+    protected function defineEnvironment($app): void
     {
-        $app->singleton(
-            'Illuminate\Contracts\Console\Kernel',
-            'Illuminate\Foundation\Console\Kernel'
-        );
-    }
-
-    public function getEnvironmentSetUp($app)
-    {
-        config()->set('database.default', 'sqlite');
-        config()->set('database.connections.sqlite', [
-            'driver'   => 'sqlite',
-            'database' => ':memory:',
-            'prefix'   => '',
-        ]);
+        tap($app['config'], function (Repository $config) {
+            $config->set('database.default', 'sqlite');
+            $config->set('database.connections.sqlite', [
+                'driver'   => 'sqlite',
+                'database' => ':memory:',
+                'prefix'   => '',
+            ]);
+        });
 
         $migration = include __DIR__.'/../vendor/spatie/laravel-permission/database/migrations/create_permission_tables.php.stub';
         $migration->up();
