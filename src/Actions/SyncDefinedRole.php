@@ -3,13 +3,13 @@
 namespace BinaryCats\LaravelRbac\Actions;
 
 use BackedEnum;
-use Illuminate\Support\Facades\Artisan;
 use Lorisleiva\Actions\Action;
+use Spatie\Permission\Contracts\Role;
 
 class SyncDefinedRole extends Action
 {
     /**
-     * @return void
+     * Handle syncing a defined role
      */
     public function handle(string $name, string $guard, array $permissions): void
     {
@@ -17,12 +17,18 @@ class SyncDefinedRole extends Action
             ->map(fn ($permission) => match (true) {
                 $permission instanceof BackedEnum => $permission->value,
                 default                           => (string) $permission
-            })->implode('|');
+            });
 
-        Artisan::call('permission:create-role', [
-            'name'        => $name,
-            'guard'       => $guard,
-            'permissions' => $permissions,
-        ]);
+        $this->model()
+            ->findOrCreate($name, $guard)
+            ->syncPermissions($permissions);
+    }
+
+    /**
+     * Resolve role model
+     */
+    protected function model(): Role
+    {
+        return app(Role::class);
     }
 }

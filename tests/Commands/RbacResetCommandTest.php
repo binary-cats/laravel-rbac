@@ -2,10 +2,9 @@
 
 namespace BinaryCats\LaravelRbac\Tests\Commands;
 
-use BinaryCats\LaravelRbac\Commands\RbacResetCommand;
 use BinaryCats\LaravelRbac\Tests\Fixtures\RbacResetJob;
 use BinaryCats\LaravelRbac\Tests\TestCase;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Schema;
 use PHPUnit\Framework\Attributes\Before;
@@ -28,13 +27,14 @@ class RbacResetCommandTest extends TestCase
             'rbac.jobs' => [RbacResetJob::class],
         ]);
 
-        Artisan::call(RbacResetCommand::class);
+        $this->artisan('rbac:reset')
+            ->assertSuccessful();
 
         Bus::assertDispatched(RbacResetJob::class);
     }
 
     #[Test]
-    public function it_will_not_dispatch_if_not_migrated()
+    public function it_will_not_dispatch_if_not_migrated(): void
     {
         $this->app['config']->set([
             'permission.table_names.permissions' => 'foo',
@@ -44,7 +44,8 @@ class RbacResetCommandTest extends TestCase
             ->with('foo')
             ->andReturnFalse();
 
-        Artisan::call(RbacResetCommand::class);
+        $this->artisan('rbac:reset')
+            ->assertExitCode(Command::INVALID);
 
         Bus::assertNotDispatched(RbacResetJob::class);
     }

@@ -3,22 +3,25 @@
 namespace BinaryCats\LaravelRbac\Actions;
 
 use BackedEnum;
-use Illuminate\Support\Facades\Artisan;
 use Lorisleiva\Actions\Action;
+use Spatie\Permission\Contracts\Permission;
 
 class StorePermission extends Action
 {
     /**
-     * @param \BackedEnum $permission
-     * @param string      $guard
-     *
-     * @return void
+     * Handle storing a permission
      */
     public function handle(BackedEnum $permission, string $guard): void
     {
-        Artisan::call('permission:create-permission', [
-            'name'  => $permission->value,
-            'guard' => $guard,
-        ]);
+        $this->model()::findOrCreate($permission->value, $guard);
+    }
+
+    /**
+     * Resolve permission model
+     */
+    protected function model(): Permission
+    {
+        dd(config('permission'));
+        return app(Permission::class);
     }
 }

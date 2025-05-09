@@ -9,7 +9,12 @@ use Spatie\Permission\PermissionServiceProvider;
 
 class TestCase extends Orchestra
 {
-    protected function getPackageProviders($app)
+    /**
+     * Get the package providers fopr registrations
+     * 
+     * @param \Illuminate\Foundation\Application $app
+     */
+    protected function getPackageProviders($app): array
     {
         return [
             CollectionMacroServiceProvider::class,
@@ -22,10 +27,8 @@ class TestCase extends Orchestra
      * Resolve application Console Kernel implementation.
      *
      * @param \Illuminate\Foundation\Application $app
-     *
-     * @return void
      */
-    protected function resolveApplicationConsoleKernel($app)
+    protected function resolveApplicationConsoleKernel($app): void
     {
         $app->singleton(
             'Illuminate\Contracts\Console\Kernel',
@@ -33,10 +36,14 @@ class TestCase extends Orchestra
         );
     }
 
-    public function getEnvironmentSetUp($app)
+    /**
+     * Set up the environment
+     */
+    public function getEnvironmentSetUp($app): void
     {
-        config()->set('database.default', 'sqlite');
-        config()->set('database.connections.sqlite', [
+        dd('second');
+        $app['config']->set('database.default', 'sqlite');
+        $app['config']->set('database.connections.sqlite', [
             'driver'   => 'sqlite',
             'database' => ':memory:',
             'prefix'   => '',
