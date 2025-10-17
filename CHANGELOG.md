@@ -2,6 +2,27 @@
 
 All notable changes to `binary-cats/rbac` will be documented in this file.
 
+## v1.5 - 2025-05-09
+
+### What's Changed
+
+* Simplify the package by @cyrillkalita in https://github.com/binary-cats/laravel-rbac/pull/16
+  
+* Add Laravel 8.3 and necessary dependencies to Dockerfile
+  
+* Refactor actions for syncing permissions
+  
+* Update composer.json and sync actions for roles and permissions
+  
+* Remove spatie/laravel-collection-macros dependency
+  
+* Refresh tests to rely on the model resolution instead of Artisan command
+  
+* Refresh command to display the progress with components
+  
+
+**Full Changelog**: https://github.com/binary-cats/laravel-rbac/compare/1.4.0...1.5.0
+
 ## v1.4 - 2025-03-22
 
 ### What's Changed
