@@ -29,6 +29,31 @@ class SyncDefinedRoleTest extends TestCase
     }
 
     #[Test]
+    public function it_will_defer_syncing_defined_role_to_artisan_with_custom_guard(): void
+    {
+        StorePermission::run('bar', 'admin');
+        StorePermission::run(FooAbility::One, 'admin');
+
+        SyncDefinedRole::run('foo role', 'admin', [
+            'bar',
+            FooAbility::One,
+        ]);
+
+        $this->assertDatabaseHas(config('permission.table_names.roles'), [
+            'name'       => 'foo role',
+            'guard_name' => 'admin',
+        ]);
+
+        $role = app(config('permission.models.role'))->where([
+            'name'       => 'foo role',
+            'guard_name' => 'admin',
+        ])->firstOrFail();
+
+        $this->assertTrue($role->hasPermissionTo('bar', 'admin'));
+        $this->assertTrue($role->hasPermissionTo(FooAbility::One, 'admin'));
+    }
+
+    #[Test]
     public function it_will_throw_an_exception_on_missing_permission(): void
     {
         $this->expectException(PermissionDoesNotExist::class);

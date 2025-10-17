@@ -21,7 +21,7 @@ class SyncDefinedRole extends Action
         $permissions = collect($permissions)
             ->map(fn ($permission) => match (true) {
                 $permission instanceof BackedEnum => $permission->value,
-                default                           => (string) $permission
+                default => (string) $permission
             });
 
         $this->role::findOrCreate($name, $guard)
