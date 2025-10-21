@@ -26,7 +26,7 @@ class ResetPermissions
     }
 
     /**
-     * Handle resetting permissions
+     * Handle resetting permissions.
      */
     public function handle(): void
     {
