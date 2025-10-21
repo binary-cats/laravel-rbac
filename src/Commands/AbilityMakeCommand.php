@@ -40,7 +40,12 @@ class AbilityMakeCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace.'\Abilities';
+        $path = config('rbac.path', 'Abilities');
+
+        return str($path)
+            ->after(app()->path())
+            ->trim('/')
+            ->prepend($rootNamespace, '\\');
     }
 
     /**

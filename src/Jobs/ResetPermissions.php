@@ -18,18 +18,15 @@ class ResetPermissions
     use Queueable;
     use SerializesModels;
 
-    protected string $guard;
+    protected readonly string $guard;
 
-    /**
-     * @param string|null $guard
-     */
     public function __construct(?string $guard = null)
     {
         $this->guard = $guard ?? config('auth.defaults.guard');
     }
 
     /**
-     * @return void
+     * Handle resetting permissions.
      */
     public function handle(): void
     {
