@@ -2,6 +2,17 @@
 
 All notable changes to `binary-cats/rbac` will be documented in this file.
 
+## v1.6 - 2025-10-21
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.3.0 to 2.4.0 by @dependabot[bot] in https://github.com/binary-cats/laravel-rbac/pull/18
+* Bump actions/checkout from 4 to 5 by @dependabot[bot] in https://github.com/binary-cats/laravel-rbac/pull/22
+* Bump stefanzweifel/git-auto-commit-action from 5 to 7 by @dependabot[bot] in https://github.com/binary-cats/laravel-rbac/pull/24
+* Add tests for custom guard sync by @cyrillkalita in https://github.com/binary-cats/laravel-rbac/pull/25
+
+**Full Changelog**: https://github.com/binary-cats/laravel-rbac/compare/1.5.0...1.6.0
+
 ## v1.5 - 2025-05-09
 
 ### What's Changed
