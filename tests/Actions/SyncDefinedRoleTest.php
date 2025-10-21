@@ -7,7 +7,6 @@ use BinaryCats\LaravelRbac\Actions\SyncDefinedRole;
 use BinaryCats\LaravelRbac\Tests\Fixtures\Abilities\FooAbility;
 use BinaryCats\LaravelRbac\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
-use Spatie\Permission\Exceptions\PermissionDoesNotExist;
 
 class SyncDefinedRoleTest extends TestCase
 {
@@ -37,6 +36,7 @@ class SyncDefinedRoleTest extends TestCase
         SyncDefinedRole::run('foo role', 'admin', [
             'bar',
             FooAbility::One,
+            'this-permission-is-new-and-will-be-created',
         ]);
 
         $this->assertDatabaseHas(config('permission.table_names.roles'), [
@@ -51,16 +51,6 @@ class SyncDefinedRoleTest extends TestCase
 
         $this->assertTrue($role->hasPermissionTo('bar', 'admin'));
         $this->assertTrue($role->hasPermissionTo(FooAbility::One, 'admin'));
-    }
-
-    #[Test]
-    public function it_will_throw_an_exception_on_missing_permission(): void
-    {
-        $this->expectException(PermissionDoesNotExist::class);
-        $this->expectExceptionMessage('There is no permission named `bar` for guard `web`');
-
-        SyncDefinedRole::run('foo role', 'web', [
-            'bar',
-        ]);
+        $this->assertTrue($role->hasPermissionTo('this-permission-is-new-and-will-be-created', 'admin'));
     }
 }

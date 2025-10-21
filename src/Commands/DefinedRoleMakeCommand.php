@@ -25,7 +25,7 @@ class DefinedRoleMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return file_exists($customPath = base_path('/stubs/defined-role.stub'))
+        return file_exists($customPath = $this->laravel->basePath('/stubs/defined-role.stub'))
             ? $customPath
             : __DIR__.'/../../stubs/defined-role.stub';
     }
