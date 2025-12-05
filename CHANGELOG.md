@@ -2,6 +2,10 @@
 
 All notable changes to `binary-cats/rbac` will be documented in this file.
 
+## v1.7 - 2025-12-05
+
+- Bump actions/checkout version
+
 ## v1.6 - 2025-10-21
 
 ### What's Changed
