@@ -81,10 +81,14 @@ class DiscoverAbilities
             return call_user_func(static::$guessClassNamesUsingCallback, $file, $basePath);
         }
 
-        $class = trim(Str::replaceFirst($basePath, '', $file->getRealPath()), DIRECTORY_SEPARATOR);
+        $realPath = str_replace('\\', '/', $file->getRealPath());
+        $basePath = str_replace('\\', '/', rtrim($basePath, '/\\'));
+
+        $class = trim(Str::replaceFirst($basePath, '', $realPath), '/');
+        
 
         return str_replace(
-            [DIRECTORY_SEPARATOR, ucfirst(basename(app()->path())).'\\'],
+            ['/', ucfirst(basename(app()->path())).'\\'],
             ['\\', app()->getNamespace()],
             ucfirst(Str::replaceLast('.php', '', $class))
         );
