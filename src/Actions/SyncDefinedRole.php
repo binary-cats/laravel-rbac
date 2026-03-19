@@ -5,7 +5,7 @@ namespace BinaryCats\LaravelRbac\Actions;
 use BackedEnum;
 use Illuminate\Support\Facades\Artisan;
 use Lorisleiva\Actions\Action;
-use Spatie\Permission\Commands\CreateRole;
+use Spatie\Permission\Commands\CreateRoleCommand;
 
 class SyncDefinedRole extends Action
 {
@@ -20,7 +20,7 @@ class SyncDefinedRole extends Action
                 default                           => (string) $permission
             })->implode('|');
 
-        Artisan::call(CreateRole::class, [
+        Artisan::call(CreateRoleCommand::class, [
             'name'        => $name,
             'guard'       => $guard,
             'permissions' => $permissions,

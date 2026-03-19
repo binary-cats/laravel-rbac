@@ -16,9 +16,7 @@ class FlushPermissionCache
     use SerializesModels;
 
     /**
-     * @param \Spatie\Permission\PermissionRegistrar $registrar
-     *
-     * @return void
+     * FLush cached permissions
      */
     public function handle(PermissionRegistrar $registrar): void
     {
