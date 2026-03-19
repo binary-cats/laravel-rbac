@@ -2,6 +2,15 @@
 
 All notable changes to `binary-cats/rbac` will be documented in this file.
 
+## v1.8 | Laravel 13 - 2026-03-19
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.4.0 to 2.5.0 by @dependabot[bot] in https://github.com/binary-cats/laravel-rbac/pull/29
+* Update PHP version to 8.4 and Laravel to 13.*. by @cyrillkalita in https://github.com/binary-cats/laravel-rbac/pull/30
+
+**Full Changelog**: https://github.com/binary-cats/laravel-rbac/compare/1.7.0...1.8.0
+
 ## v1.7 - 2025-12-05
 
 - Bump actions/checkout version
