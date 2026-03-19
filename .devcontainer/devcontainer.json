@@ -16,7 +16,7 @@
           "php.intelephense"
         ],
         "settings": {
-          "intelephense.environment.phpVersion": "8.3"
+          "intelephense.environment.phpVersion": "8.4"
         }
       }
     },
