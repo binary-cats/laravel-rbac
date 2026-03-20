@@ -2,6 +2,15 @@
 
 All notable changes to `binary-cats/rbac` will be documented in this file.
 
+## v2.0 | Laravel 13 - 2026-03-20
+
+### What's Changed
+
+* Patch laravel permissions by @cyrillkalita in https://github.com/binary-cats/laravel-rbac/pull/32
+* Upgrade spatie/laravel-permissions to 7.0
+
+**Full Changelog**: https://github.com/binary-cats/laravel-rbac/compare/1.8.0...2.0.0
+
 ## v1.8 | Laravel 13 - 2026-03-19
 
 ### What's Changed
