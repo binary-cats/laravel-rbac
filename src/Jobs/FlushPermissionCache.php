@@ -16,7 +16,7 @@ class FlushPermissionCache
     use SerializesModels;
 
     /**
-     * FLush cached permissions
+     * FLush cached permissions.
      */
     public function handle(PermissionRegistrar $registrar): void
     {
