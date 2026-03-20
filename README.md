@@ -19,7 +19,8 @@ You can install the package via composer:
 composer require binary-cats/laravel-rbac
 ```
 
-If you are using `spatie/laravel-permission` < version 7, you need to use 1.x version of the package:
+> **N.B.
+> If you are using `spatie/laravel-permission` < version 7, you need to use 1.x version of the package:
 
 ```bash
 composer require binary-cats/laravel-rbac:"^1.0"
