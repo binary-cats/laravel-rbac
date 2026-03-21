@@ -239,6 +239,10 @@ You're free to use this package, but if it makes it to your production environme
 - [Cyrill N Kalita](https://github.com/cyrillkalita)
 - [All Contributors](../../contributors)
 
+## Support us
+
+[Binary Cats](https://binarycats.dev) is a webdesign agency based in Illinois, US.
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
