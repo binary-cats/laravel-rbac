@@ -2,6 +2,14 @@
 
 All notable changes to `binary-cats/rbac` will be documented in this file.
 
+## v2.1 | Dependencies bump - 2026-04-12
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.5.0 to 3.0.0 by @dependabot[bot] in https://github.com/binary-cats/laravel-rbac/pull/33
+
+**Full Changelog**: https://github.com/binary-cats/laravel-rbac/compare/2.0.0...2.1.0
+
 ## v2.0 | Laravel 13 - 2026-03-20
 
 ### What's Changed
