@@ -21,7 +21,7 @@
         "illuminate/contracts": "^13.0",
         "lorisleiva/laravel-actions": "^2.8",
         "spatie/laravel-package-tools": "^1.16",
-        "spatie/laravel-permission": "^7.0"
+        "spatie/laravel-permission": "^8.0"
     },
     "require-dev": {
         "laravel/pint": "^1.14",
