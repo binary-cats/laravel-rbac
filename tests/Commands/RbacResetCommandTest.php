@@ -44,4 +44,17 @@ class RbacResetCommandTest extends TestCase
 
         Bus::assertNotDispatched(RbacResetJob::class);
     }
+
+    #[Test]
+    public function it_will_not_dispatch_when_teams_are_enabled_without_the_teams_schema(): void
+    {
+        Bus::fake();
+
+        config()->set('permission.teams', true);
+
+        $this->artisan('rbac:reset')
+            ->assertExitCode(Command::INVALID);
+
+        Bus::assertNotDispatched(RbacResetJob::class);
+    }
 }
