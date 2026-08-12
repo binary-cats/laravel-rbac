@@ -6,8 +6,8 @@ use BinaryCats\LaravelRbac\Actions\StorePermission;
 use BinaryCats\LaravelRbac\Actions\SyncDefinedRole;
 use BinaryCats\LaravelRbac\Tests\Fixtures\Abilities\FooAbility;
 use BinaryCats\LaravelRbac\Tests\TestCase;
-use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\PreCondition;
+use PHPUnit\Framework\Attributes\Test;
 use Spatie\Permission\Exceptions\PermissionDoesNotExist;
 
 class SyncDefinedRoleTest extends TestCase
