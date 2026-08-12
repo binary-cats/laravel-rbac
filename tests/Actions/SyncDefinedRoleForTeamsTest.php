@@ -28,9 +28,9 @@ class SyncDefinedRoleForTeamsTest extends TeamsTestCase
         SyncDefinedRole::run('editor', 'web', [FooAbility::One]);
 
         $this->assertDatabaseHas(config('permission.table_names.roles'), [
-            'name' => 'editor',
+            'name'       => 'editor',
             'guard_name' => 'web',
-            'team_id' => null,
+            'team_id'    => null,
         ]);
         $this->assertSame(10, getPermissionsTeamId());
     }
@@ -47,9 +47,9 @@ class SyncDefinedRoleForTeamsTest extends TeamsTestCase
         SyncDefinedRoles::dispatch();
 
         $this->assertDatabaseHas(config('permission.table_names.roles'), [
-            'name' => 'tenant manager',
+            'name'       => 'tenant manager',
             'guard_name' => 'web',
-            'team_id' => 10,
+            'team_id'    => 10,
         ]);
         $this->assertTrue($customRole->fresh()->hasPermissionTo(FooAbility::One, 'web'));
     }
