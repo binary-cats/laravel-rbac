@@ -10,7 +10,8 @@ class SyncDefinedRole extends Action
 {
     public function __construct(
         protected readonly Role $role,
-    ) {}
+    ) {
+    }
 
     /**
      * Handle syncing a defined role.
@@ -20,10 +21,10 @@ class SyncDefinedRole extends Action
         $permissions = collect($permissions)
             ->map(fn ($permission): string => match (true) {
                 $permission instanceof BackedEnum => $permission->value,
-                default => (string) $permission
+                default                           => (string) $permission
             })->all();
 
-        if (! config('permission.teams')) {
+        if (!config('permission.teams')) {
             $this->role->findOrCreate($name, $guard)
                 ->syncPermissions($permissions);
 

@@ -27,13 +27,13 @@ class RbacResetCommand extends Command
      */
     public function handle(): int
     {
-        if (! $this->databaseReady()) {
+        if (!$this->databaseReady()) {
             $this->error('DB is not ready. Please run migrations.');
 
             return self::INVALID;
         }
 
-        if (! $this->teamsSchemaReady()) {
+        if (!$this->teamsSchemaReady()) {
             $this->error(
                 'Spatie teams are enabled, but its team columns are missing. '
                 .'Run "php artisan permission:setup-teams" and then "php artisan migrate".'
@@ -80,7 +80,7 @@ class RbacResetCommand extends Command
      */
     protected function teamsSchemaReady(): bool
     {
-        if (! config('permission.teams')) {
+        if (!config('permission.teams')) {
             return true;
         }
 

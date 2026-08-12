@@ -23,10 +23,10 @@ class DefinedRoleAssignmentTest extends TeamsTestCase
         $user->assignRole('editor');
 
         $this->assertDatabaseHas(config('permission.table_names.model_has_roles'), [
-            'role_id' => 1,
-            'model_id' => $user->getKey(),
+            'role_id'    => 1,
+            'model_id'   => $user->getKey(),
             'model_type' => $user->getMorphClass(),
-            'team_id' => 10,
+            'team_id'    => 10,
         ]);
     }
 }
