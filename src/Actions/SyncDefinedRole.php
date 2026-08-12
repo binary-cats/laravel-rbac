@@ -3,12 +3,16 @@
 namespace BinaryCats\LaravelRbac\Actions;
 
 use BackedEnum;
-use Illuminate\Support\Facades\Artisan;
 use Lorisleiva\Actions\Action;
-use Spatie\Permission\Commands\CreateRoleCommand;
+use Spatie\Permission\Contracts\Role;
 
 class SyncDefinedRole extends Action
 {
+    public function __construct(
+        protected readonly Role $role,
+    ) {
+    }
+
     /**
      * Handle syncing a defined role.
      */
@@ -18,12 +22,9 @@ class SyncDefinedRole extends Action
             ->map(fn ($permission): string => match (true) {
                 $permission instanceof BackedEnum => $permission->value,
                 default                           => (string) $permission
-            })->implode('|');
+            })->all();
 
-        Artisan::call(CreateRoleCommand::class, [
-            'name'        => $name,
-            'guard'       => $guard,
-            'permissions' => $permissions,
-        ]);
+        $this->role->findOrCreate($name, $guard)
+            ->syncPermissions($permissions);
     }
 }

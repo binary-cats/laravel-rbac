@@ -26,7 +26,7 @@ class AbilityMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return file_exists($customPath = base_path('/stubs/ability.stub'))
+        return file_exists($customPath = $this->laravel->basePath('/stubs/ability.stub'))
             ? $customPath
             : __DIR__.'/../../stubs/ability.stub';
     }
