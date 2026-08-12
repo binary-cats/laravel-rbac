@@ -73,8 +73,7 @@ class DefinedRoleMakeCommandTest extends TestCase
             ->method('basePath')
             ->willReturnCallback(fn (string $path = ''): string => $basePath.$path);
 
-        $command = new class(app(Filesystem::class)) extends DefinedRoleMakeCommand
-        {
+        $command = new class(app(Filesystem::class)) extends DefinedRoleMakeCommand {
             public function stub(): string
             {
                 return $this->getStub();
