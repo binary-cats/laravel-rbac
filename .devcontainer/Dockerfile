@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN mkdir -p /var/www/html
 
-# Install 8.4 from Ondrej’s PPA
+# Install 8.4s from Ondrej’s PPA
 RUN apt-get update && apt-get install -y \
     software-properties-common \
     && add-apt-repository ppa:ondrej/php -y \
