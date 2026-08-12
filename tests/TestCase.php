@@ -26,7 +26,7 @@ class TestCase extends Orchestra
     /**
      * Get the package providers fopr registrations.
      *
-     * @param  Application  $app
+     * @param Application $app
      */
     protected function getPackageProviders($app): array
     {
@@ -44,9 +44,9 @@ class TestCase extends Orchestra
         tap($app['config'], function (Repository $config) {
             $config->set('database.default', 'sqlite');
             $config->set('database.connections.sqlite', [
-                'driver' => 'sqlite',
+                'driver'   => 'sqlite',
                 'database' => ':memory:',
-                'prefix' => '',
+                'prefix'   => '',
             ]);
             $config->set('permission.teams', $this->withTeams);
 
