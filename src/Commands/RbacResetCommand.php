@@ -33,6 +33,15 @@ class RbacResetCommand extends Command
             return self::INVALID;
         }
 
+        if (!$this->teamsSchemaReady()) {
+            $this->error(
+                'Spatie teams are enabled, but its team columns are missing. '
+                .'Run "php artisan permission:setup-teams" and then "php artisan migrate".'
+            );
+
+            return self::INVALID;
+        }
+
         $this->jobs()->each(function (string $job) {
             $this->components->task(
                 $job,
@@ -64,5 +73,26 @@ class RbacResetCommand extends Command
             ->map(fn (string $table) => Schema::hasTable($table))
             ->reject()
             ->isEmpty();
+    }
+
+    /**
+     * True when the Spatie teams schema is prepared.
+     */
+    protected function teamsSchemaReady(): bool
+    {
+        if (!config('permission.teams')) {
+            return true;
+        }
+
+        $teamKey = config('permission.column_names.team_foreign_key', 'team_id');
+        $tables = config('permission.table_names', []);
+
+        return collect([
+            $tables['roles'] ?? null,
+            $tables['model_has_roles'] ?? null,
+            $tables['model_has_permissions'] ?? null,
+        ])->every(
+            fn (?string $table): bool => $table !== null && Schema::hasColumn($table, $teamKey)
+        );
     }
 }

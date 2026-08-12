@@ -188,6 +188,20 @@ class EditorRole extends DefinedRole
 ```
 Now you are confident a specific role has specific permissions!
 
+#### Teams
+
+When [Spatie's teams feature](https://spatie.be/docs/laravel-permission/v6/basic-usage/teams-permissions) is enabled, defined roles remain global. `rbac:reset` always synchronizes them with a `null` team ID, so one `Editor` role is available in every tenant.
+
+Assign a defined role to a user only after setting the active tenant with Spatie's team resolver. Spatie stores that assignment in its tenant-scoped role pivot:
+
+```php
+setPermissionsTeamId($tenant->getKey());
+
+$user->assignRole('Editor');
+```
+
+Create tenant-custom roles in application code while that tenant is active. Do not add them to `rbac.roles`: package-managed defined roles are synchronized by `rbac:reset`, while tenant-custom roles remain application-managed and untouched.
+
 ### Connect the dots
 
 Now that we have the abilities and roles, simply register role with `rbac.php` config:

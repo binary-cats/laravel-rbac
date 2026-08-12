@@ -24,7 +24,22 @@ class SyncDefinedRole extends Action
                 default                           => (string) $permission
             })->all();
 
-        $this->role->findOrCreate($name, $guard)
-            ->syncPermissions($permissions);
+        if (!config('permission.teams')) {
+            $this->role->findOrCreate($name, $guard)
+                ->syncPermissions($permissions);
+
+            return;
+        }
+
+        $previousTeamId = getPermissionsTeamId();
+
+        setPermissionsTeamId(null);
+
+        try {
+            $this->role->findOrCreate($name, $guard)
+                ->syncPermissions($permissions);
+        } finally {
+            setPermissionsTeamId($previousTeamId);
+        }
     }
 }
