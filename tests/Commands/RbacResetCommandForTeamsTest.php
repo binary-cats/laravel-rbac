@@ -3,12 +3,14 @@
 namespace BinaryCats\LaravelRbac\Tests\Commands;
 
 use BinaryCats\LaravelRbac\Tests\Fixtures\RbacResetJob;
-use BinaryCats\LaravelRbac\Tests\TeamsTestCase;
+use BinaryCats\LaravelRbac\Tests\TestCase;
 use Illuminate\Support\Facades\Bus;
 use PHPUnit\Framework\Attributes\Test;
 
-class RbacResetCommandForTeamsTest extends TeamsTestCase
+class RbacResetCommandForTeamsTest extends TestCase
 {
+    protected bool $withTeams = true;
+
     #[Test]
     public function it_will_dispatch_when_the_spatie_teams_schema_is_migrated(): void
     {

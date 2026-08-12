@@ -6,11 +6,13 @@ use BinaryCats\LaravelRbac\Actions\StorePermission;
 use BinaryCats\LaravelRbac\Actions\SyncDefinedRole;
 use BinaryCats\LaravelRbac\Tests\Fixtures\Abilities\FooAbility;
 use BinaryCats\LaravelRbac\Tests\Fixtures\TeamUser;
-use BinaryCats\LaravelRbac\Tests\TeamsTestCase;
+use BinaryCats\LaravelRbac\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
-class DefinedRoleAssignmentTest extends TeamsTestCase
+class DefinedRoleAssignmentTest extends TestCase
 {
+    protected bool $withTeams = true;
+
     #[Test]
     public function it_assigns_a_global_defined_role_within_the_active_team(): void
     {
@@ -23,10 +25,10 @@ class DefinedRoleAssignmentTest extends TeamsTestCase
         $user->assignRole('editor');
 
         $this->assertDatabaseHas(config('permission.table_names.model_has_roles'), [
-            'role_id'    => 1,
-            'model_id'   => $user->getKey(),
+            'role_id' => 1,
+            'model_id' => $user->getKey(),
             'model_type' => $user->getMorphClass(),
-            'team_id'    => 10,
+            'team_id' => 10,
         ]);
     }
 }

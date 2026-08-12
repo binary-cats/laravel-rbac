@@ -7,13 +7,15 @@ use BinaryCats\LaravelRbac\Actions\SyncDefinedRole;
 use BinaryCats\LaravelRbac\Jobs\SyncDefinedRoles;
 use BinaryCats\LaravelRbac\Tests\Fixtures\Abilities\FooAbility;
 use BinaryCats\LaravelRbac\Tests\Fixtures\FooRole;
-use BinaryCats\LaravelRbac\Tests\TeamsTestCase;
+use BinaryCats\LaravelRbac\Tests\TestCase;
 use PHPUnit\Framework\Attributes\PreCondition;
 use PHPUnit\Framework\Attributes\Test;
 use Spatie\Permission\Contracts\Role;
 
-class SyncDefinedRoleForTeamsTest extends TeamsTestCase
+class SyncDefinedRoleForTeamsTest extends TestCase
 {
+    protected bool $withTeams = true;
+
     #[PreCondition]
     public function prepareData(): void
     {
@@ -28,9 +30,9 @@ class SyncDefinedRoleForTeamsTest extends TeamsTestCase
         SyncDefinedRole::run('editor', 'web', [FooAbility::One]);
 
         $this->assertDatabaseHas(config('permission.table_names.roles'), [
-            'name'       => 'editor',
+            'name' => 'editor',
             'guard_name' => 'web',
-            'team_id'    => null,
+            'team_id' => null,
         ]);
         $this->assertSame(10, getPermissionsTeamId());
     }
@@ -47,9 +49,9 @@ class SyncDefinedRoleForTeamsTest extends TeamsTestCase
         SyncDefinedRoles::dispatch();
 
         $this->assertDatabaseHas(config('permission.table_names.roles'), [
-            'name'       => 'tenant manager',
+            'name' => 'tenant manager',
             'guard_name' => 'web',
-            'team_id'    => 10,
+            'team_id' => 10,
         ]);
         $this->assertTrue($customRole->fresh()->hasPermissionTo(FooAbility::One, 'web'));
     }
