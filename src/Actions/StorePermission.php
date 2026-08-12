@@ -22,6 +22,6 @@ class StorePermission extends Action
             $permission = $permission->value;
         }
 
-        $this->permission::findOrCreate($permission, $guard);
+        $this->permission->findOrCreate($permission, $guard);
     }
 }

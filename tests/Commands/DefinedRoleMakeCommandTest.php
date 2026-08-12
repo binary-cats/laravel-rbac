@@ -4,6 +4,8 @@ namespace BinaryCats\LaravelRbac\Tests\Commands;
 
 use BinaryCats\LaravelRbac\Commands\DefinedRoleMakeCommand;
 use BinaryCats\LaravelRbac\Tests\TestCase;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\File;
 use PHPUnit\Framework\Attributes\After;
 use PHPUnit\Framework\Attributes\Test;
@@ -11,15 +13,13 @@ use PHPUnit\Framework\Attributes\Test;
 class DefinedRoleMakeCommandTest extends TestCase
 {
     #[After]
-    protected function tearDown(): void
+    protected function cleanUpTest(): void
     {
         $stubPath = app_path('Roles/FooRole.php');
 
         if (File::exists($stubPath)) {
             unlink($stubPath);
         }
-
-        parent::tearDown();
     }
 
     #[Test]
@@ -33,5 +33,56 @@ class DefinedRoleMakeCommandTest extends TestCase
         $this->assertFileExists($stubPath);
         $this->assertStringContainsString('class FooRole extends DefinedRole', File::get($stubPath));
         $this->assertStringContainsString('namespace App\Roles;', File::get($stubPath));
+    }
+
+    #[Test]
+    public function it_will_use_a_custom_defined_role_stub_when_available(): void
+    {
+        $basePath = sys_get_temp_dir().'/laravel-rbac-'.uniqid();
+        $customStubPath = $basePath.'/stubs/defined-role.stub';
+
+        File::ensureDirectoryExists(dirname($customStubPath));
+        File::put($customStubPath, 'custom defined role stub');
+
+        try {
+            $this->assertSame($customStubPath, $this->commandForBasePath($basePath)->stub());
+        } finally {
+            File::deleteDirectory($basePath);
+        }
+    }
+
+    #[Test]
+    public function it_will_use_the_package_defined_role_stub_when_a_custom_stub_is_unavailable(): void
+    {
+        $basePath = sys_get_temp_dir().'/laravel-rbac-'.uniqid();
+
+        try {
+            $this->assertSame(
+                realpath(dirname(__DIR__, 2).'/stubs/defined-role.stub'),
+                realpath($this->commandForBasePath($basePath)->stub())
+            );
+        } finally {
+            File::deleteDirectory($basePath);
+        }
+    }
+
+    private function commandForBasePath(string $basePath): DefinedRoleMakeCommand
+    {
+        $application = $this->createMock(Application::class);
+        $application->expects($this->once())
+            ->method('basePath')
+            ->willReturnCallback(fn (string $path = ''): string => $basePath.$path);
+
+        $command = new class(app(Filesystem::class)) extends DefinedRoleMakeCommand
+        {
+            public function stub(): string
+            {
+                return $this->getStub();
+            }
+        };
+
+        $command->setLaravel($application);
+
+        return $command;
     }
 }

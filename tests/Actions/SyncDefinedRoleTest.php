@@ -7,15 +7,21 @@ use BinaryCats\LaravelRbac\Actions\SyncDefinedRole;
 use BinaryCats\LaravelRbac\Tests\Fixtures\Abilities\FooAbility;
 use BinaryCats\LaravelRbac\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Attributes\PreCondition;
+use Spatie\Permission\Exceptions\PermissionDoesNotExist;
 
 class SyncDefinedRoleTest extends TestCase
 {
-    #[Test]
-    public function it_will_defer_syncing_defined_role_to_artisan(): void
+    #[PreCondition]
+    public function prepareData(): void
     {
         StorePermission::run('bar', 'web');
         StorePermission::run(FooAbility::One, 'web');
+    }
 
+    #[Test]
+    public function it_will_sync_a_defined_role(): void
+    {
         SyncDefinedRole::run('foo role', 'web', [
             'bar',
             FooAbility::One,
@@ -25,32 +31,43 @@ class SyncDefinedRoleTest extends TestCase
             'name'       => 'foo role',
             'guard_name' => 'web',
         ]);
+
+        $role = app(config('permission.models.role'))->where([
+            'name'       => 'foo role',
+            'guard_name' => 'web',
+        ])->firstOrFail();
+
+        $this->assertTrue($role->hasPermissionTo('bar', 'web'));
+        $this->assertTrue($role->hasPermissionTo(FooAbility::One, 'web'));
     }
 
     #[Test]
-    public function it_will_defer_syncing_defined_role_to_artisan_with_custom_guard(): void
+    public function it_will_remove_permissions_that_are_no_longer_defined(): void
+    {
+        SyncDefinedRole::run('foo role', 'web', ['bar', FooAbility::One]);
+        SyncDefinedRole::run('foo role', 'web', ['bar']);
+
+        $role = app(config('permission.models.role'))->where([
+            'name'       => 'foo role',
+            'guard_name' => 'web',
+        ])->firstOrFail();
+
+        $this->assertTrue($role->hasPermissionTo('bar', 'web'));
+        $this->assertFalse($role->hasPermissionTo(FooAbility::One, 'web'));
+    }
+
+    #[Test]
+    public function it_will_throw_an_exception_when_a_permission_does_not_exist_for_a_custom_guard(): void
     {
         StorePermission::run('bar', 'admin');
         StorePermission::run(FooAbility::One, 'admin');
+
+        $this->expectException(PermissionDoesNotExist::class);
 
         SyncDefinedRole::run('foo role', 'admin', [
             'bar',
             FooAbility::One,
             'this-permission-is-new-and-will-be-created',
         ]);
-
-        $this->assertDatabaseHas(config('permission.table_names.roles'), [
-            'name'       => 'foo role',
-            'guard_name' => 'admin',
-        ]);
-
-        $role = app(config('permission.models.role'))->where([
-            'name'       => 'foo role',
-            'guard_name' => 'admin',
-        ])->firstOrFail();
-
-        $this->assertTrue($role->hasPermissionTo('bar', 'admin'));
-        $this->assertTrue($role->hasPermissionTo(FooAbility::One, 'admin'));
-        $this->assertTrue($role->hasPermissionTo('this-permission-is-new-and-will-be-created', 'admin'));
     }
 }
