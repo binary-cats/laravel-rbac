@@ -4,14 +4,14 @@ namespace BinaryCats\LaravelRbac\Tests;
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use PHPUnit\Framework\Attributes\PreCondition;
 use Spatie\Permission\PermissionRegistrar;
 
 class TeamsTestCase extends TestCase
 {
-    #[PreCondition]
-    public function prepareData(): void
+    protected function setUp(): void
     {
+        parent::setUp();
+
         config()->set('permission.teams', true);
         app(PermissionRegistrar::class)->initializeCache();
     }
