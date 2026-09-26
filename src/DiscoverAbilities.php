@@ -85,7 +85,6 @@ class DiscoverAbilities
         $basePath = str_replace('\\', '/', rtrim($basePath, '/\\'));
 
         $class = trim(Str::replaceFirst($basePath, '', $realPath), '/');
-        
 
         return str_replace(
             ['/', ucfirst(basename(app()->path())).'\\'],
