@@ -2,6 +2,14 @@
 
 All notable changes to `binary-cats/rbac` will be documented in this file.
 
+## v2.4 | ✨ Add Boost guidelines - 2026-09-26
+
+### What's Changed
+
+* ✨ | Add boost guildelines by @cyrillkalita in https://github.com/binary-cats/laravel-rbac/pull/43
+
+**Full Changelog**: https://github.com/binary-cats/laravel-rbac/compare/2.3.0...2.4.0
+
 ## v2.3 | Upgrade spatie dependency - 2026-08-12
 
 ### What's Changed
