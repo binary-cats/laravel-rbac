@@ -2,6 +2,41 @@
 
 All notable changes to `binary-cats/rbac` will be documented in this file.
 
+## v2.3 | Upgrade spatie dependency - 2026-08-12
+
+### What's Changed
+
+* Update spatie/laravel-permission requirement from ^7.0 to ^8.3 by @dependabot[bot] in https://github.com/binary-cats/laravel-rbac/pull/37
+
+**Full Changelog**: https://github.com/binary-cats/laravel-rbac/compare/2.2.0...2.3.0
+
+## v2.2 | Fix sync issue  - 2026-08-12
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 3.0.0 to 3.1.0 by @dependabot[bot] in https://github.com/binary-cats/laravel-rbac/pull/34
+* Update Dockerfile and permissions handling in Actions by @cyrillkalita in https://github.com/binary-cats/laravel-rbac/pull/38
+* Bump actions/checkout from 6 to 7 by @dependabot[bot] in https://github.com/binary-cats/laravel-rbac/pull/36
+
+**Full Changelog**: https://github.com/binary-cats/laravel-rbac/compare/2.1.0...2.2.0
+
+## v2.1 | Dependencies bump - 2026-04-12
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.5.0 to 3.0.0 by @dependabot[bot] in https://github.com/binary-cats/laravel-rbac/pull/33
+
+**Full Changelog**: https://github.com/binary-cats/laravel-rbac/compare/2.0.0...2.1.0
+
+## v2.0 | Laravel 13 - 2026-03-20
+
+### What's Changed
+
+* Patch laravel permissions by @cyrillkalita in https://github.com/binary-cats/laravel-rbac/pull/32
+* Upgrade spatie/laravel-permissions to 7.0
+
+**Full Changelog**: https://github.com/binary-cats/laravel-rbac/compare/1.8.0...2.0.0
+
 ## v1.8 | Laravel 13 - 2026-03-19
 
 ### What's Changed
